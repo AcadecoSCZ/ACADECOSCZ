@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcadecoSCZ - Plataforma Estudiantil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .calendar-day {
+            min-height: 80px;
+            position: relative;
+        }
+        .calendar-day:hover {
+            background-color: #f3f4f6;
+        }
+        .note-indicator {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+        }
+        .task-card {
+            transition: all 0.2s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-blue-600">📚 AcadecoSCZ</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600" id="header-student-name">Estudiante</span>
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium" id="header-avatar">E</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b" id="main-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <button onclick="showSection('inicio')" class="nav-btn py-4 px-1 border-b-2 border-blue-500 text-blue-600 font-medium text-sm">
+                    🏠 Inicio
+                </button>
+                <button onclick="showSection('nosotros')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                    ℹ️ Nosotros
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Academic Navigation (Hidden by default) -->
+    <nav class="bg-white border-b hidden" id="academic-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-8">
+                    <button onclick="showSection('progreso')" class="nav-btn py-4 px-1 border-b-2 border-blue-500 text-blue-600 font-medium text-sm">
+                        📊 Mi Progreso
+                    </button>
+                    <button onclick="showSection('canales')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        💬 Canales
+                    </button>
+                    <button onclick="showSection('tareas')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        📋 Tareas
+                    </button>
+                    <button onclick="showSection('calendario')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        📅 Calendario
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showSection('perfil')" class="text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        ⚙️ Perfil
+                    </button>
+                    <button onclick="goBackToMain()" class="px-3 py-1 text-sm text-gray-600 hover:text-gray-800">
+                        ← Volver al inicio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Inicio Section -->
+        <div id="inicio-section" class="section">
+            <!-- Hero Section -->
+            <div class="hero-gradient rounded-2xl text-white p-12 mb-12 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Bienvenido a AcadecoSCZ</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Tu plataforma integral para el éxito académico</p>
+                <div class="flex justify-center">
+                    <button onclick="showSection('nosotros')" class="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                        Conoce Más
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="feature-card bg-white rounded-xl shadow-sm border p-8 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">💬</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Canales por Materia</h3>
+                    <p class="text-gray-600">Comunícate con profesores y compañeros organizados por materias específicas</p>
+                </div>
+
+                <div class="feature-card bg-white rounded-xl shadow-sm border p-8 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">📋</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Gestión de Tareas</h3>
+                    <p class="text-gray-600">Organiza tus tareas, adjunta archivos y mantén el control de tus entregas</p>
+                </div>
+
+                <div class="feature-card bg-white rounded-xl shadow-sm border p-8 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">📅</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Calendario Académico</h3>
+                    <p class="text-gray-600">Planifica tus actividades y mantén anotaciones importantes en cada día</p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Nosotros Section -->
+        <div id="nosotros-section" class="section hidden">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Bienvenido a AcadecoSCZ</h2>
+                    <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border p-8 md:p-12">
+                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                        <p class="mb-6">
+                            En la actualidad, uno de los mayores retos para los estudiantes es mantener un buen rendimiento académico frente a las distracciones constantes de los dispositivos móviles y las redes sociales. La falta de organización en la gestión de tareas, exámenes y actividades extracurriculares se ha convertido en una de las principales causas de bajo desempeño escolar.
+                        </p>
+                        
+                        <p class="mb-6">
+                            Consciente de esta realidad, AcadecoSCZ nace como una herramienta tecnológica diseñada para ayudarte a organizar tu vida académica de manera eficiente. A través de nuestra aplicación móvil y página web, ofrecemos un espacio intuitivo y funcional que te permitirá planificar tus actividades, recibir recordatorios personalizados y, al mismo tiempo, fomentar un uso responsable del tiempo.
+                        </p>
+                        
+                        <p class="mb-6">
+                            Nuestro objetivo es claro: apoyarte en la construcción de hábitos de estudio más organizados, mejorar tu rendimiento escolar y minimizar las distracciones digitales. Además, ponemos a tu disposición estadísticas e información personalizada que te ayudarán a reflexionar sobre tu propio uso de la tecnología y a encontrar un equilibrio entre estudio y ocio.
+                        </p>
+                        
+                        <p class="mb-8">
+                            En AcadecoSCZ, creemos que la tecnología debe ser un aliado en tu aprendizaje, no un obstáculo.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                        <div class="text-center p-6 bg-blue-50 rounded-xl">
+                            <div class="text-4xl mb-4">🎯</div>
+                            <h3 class="text-xl font-semibold mb-2">Nuestra Misión</h3>
+                            <p class="text-gray-600">Transformar la manera en que los estudiantes organizan su vida académica mediante tecnología intuitiva</p>
+                        </div>
+                        <div class="text-center p-6 bg-green-50 rounded-xl">
+                            <div class="text-4xl mb-4">🌟</div>
+                            <h3 class="text-xl font-semibold mb-2">Nuestra Visión</h3>
+                            <p class="text-gray-600">Ser la plataforma líder en organización académica que impulse el éxito estudiantil</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="mt-12 pt-8 border-t border-gray-200">
+                        <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Contáctanos</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <!-- Instagram -->
+                            <div class="text-center p-6 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
+                                <div class="text-4xl mb-4">📷</div>
+                                <h4 class="text-lg font-semibold mb-2">Instagram</h4>
+                                <p class="text-gray-600 mb-3">Síguenos para contenido educativo</p>
+                                <a href="https://instagram.com/acadecoscz" target="_blank" class="inline-block px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors">
+                                    @acadecoscz
+                                </a>
+                            </div>
+
+                            <!-- Facebook -->
+                            <div class="text-center p-6 bg-blue-50 rounded-xl">
+                                <div class="text-4xl mb-4">📘</div>
+                                <h4 class="text-lg font-semibold mb-2">Facebook</h4>
+                                <p class="text-gray-600 mb-3">Únete a nuestra comunidad</p>
+                                <a href="https://facebook.com/acadecoscz" target="_blank" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                                    AcadecoSCZ
+                                </a>
+                            </div>
+
+                            <!-- Phone Support -->
+                            <div class="text-center p-6 bg-green-50 rounded-xl">
+                                <div class="text-4xl mb-4">📞</div>
+                                <h4 class="text-lg font-semibold mb-2">Soporte Telefónico</h4>
+                                <p class="text-gray-600 mb-3">Quejas y reclamos</p>
+                                <a href="tel:123456789" class="inline-block px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors">
+                                    123-456-789
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <button onclick="showAuthModal()" class="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                            Acceder a la Plataforma
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mi Progreso Section -->
+        <div id="progreso-section" class="section hidden">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Mi Progreso Académico</h2>
+                <p class="text-gray-600">Revisa tu rendimiento y estadísticas de estudio</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="bg-white rounded-xl shadow-sm border p-8 mb-8">
+                <h3 class="text-xl font-bold text-center mb-8">Estadísticas Generales</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-600" id="total-tasks-progress">0</div>
+                        <div class="text-gray-600">Tareas Totales</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-green-600" id="completed-tasks-progress">0</div>
+                        <div class="text-gray-600">Completadas</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-purple-600" id="total-notes-progress">0</div>
+                        <div class="text-gray-600">Anotaciones</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-600">3</div>
+                        <div class="text-gray-600">Materias Activas</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress by Subject -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-2xl">🔢</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Matemáticas</h3>
+                            <p class="text-sm text-gray-500">Progreso general</p>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Tareas completadas</span>
+                            <span id="math-progress">0/0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: 0%" id="math-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-2xl">📖</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Lenguaje</h3>
+                            <p class="text-sm text-gray-500">Progreso general</p>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Tareas completadas</span>
+                            <span id="lang-progress">0/0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-600 h-2 rounded-full" style="width: 0%" id="lang-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-2xl">🧪</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Química</h3>
+                            <p class="text-sm text-gray-500">Progreso general</p>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Tareas completadas</span>
+                            <span id="chem-progress">0/0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-purple-600 h-2 rounded-full" style="width: 0%" id="chem-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perfil Section -->
+        <div id="perfil-section" class="section hidden">
+            <div class="max-w-2xl mx-auto">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Mi Perfil</h2>
+                    <p class="text-gray-600">Personaliza tu información académica</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <div class="text-center mb-8">
+                        <div class="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl text-white font-bold" id="profile-avatar">E</span>
+                        </div>
+                        <h3 class="text-xl font-semibold" id="profile-display-name">Estudiante</h3>
+                        <p class="text-gray-500" id="profile-display-info">Información del perfil</p>
+                    </div>
+
+                    <form id="profile-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Foto de perfil</label>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden" id="profile-image-preview">
+                                    <span class="text-2xl text-white font-bold" id="profile-image-text">E</span>
+                                    <img id="profile-image-display" class="w-full h-full object-cover hidden" alt="Foto de perfil">
+                                </div>
+                                <div>
+                                    <input type="file" id="profile-image-input" accept="image/*" class="hidden" onchange="handleProfileImageChange()">
+                                    <button type="button" onclick="document.getElementById('profile-image-input').click()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
+                                        Cambiar foto
+                                    </button>
+                                    <button type="button" onclick="removeProfileImage()" class="px-4 py-2 bg-red-200 text-red-700 rounded-lg hover:bg-red-300 transition-colors ml-2">
+                                        Quitar foto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
+                            <input type="text" id="student-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingresa tu nombre completo">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Edad</label>
+                            <input type="number" id="student-age" min="10" max="25" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingresa tu edad">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Curso</label>
+                            <select id="student-course" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Selecciona tu curso</option>
+                                <option value="1ro Primaria">1ro Primaria</option>
+                                <option value="2do Primaria">2do Primaria</option>
+                                <option value="3ro Primaria">3ro Primaria</option>
+                                <option value="4to Primaria">4to Primaria</option>
+                                <option value="5to Primaria">5to Primaria</option>
+                                <option value="6to Primaria">6to Primaria</option>
+                                <option value="1ro Secundaria">1ro Secundaria</option>
+                                <option value="2do Secundaria">2do Secundaria</option>
+                                <option value="3ro Secundaria">3ro Secundaria</option>
+                                <option value="4to Secundaria">4to Secundaria</option>
+                                <option value="5to Secundaria">5to Secundaria</option>
+                                <option value="6to Secundaria">6to Secundaria</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Colegio</label>
+                            <input type="text" id="student-school" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nombre de tu colegio">
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <button type="button" onclick="saveProfile()" class="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                Guardar Cambios
+                            </button>
+                            <button type="button" onclick="resetProfile()" class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-400 transition-colors">
+                                Restablecer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Canales Section -->
+        <div id="canales-section" class="section hidden">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Canales por Materia</h2>
+                <p class="text-gray-600">Selecciona una materia para ver las conversaciones y recursos</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Canal Matemáticas -->
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer" onclick="openChannel('matematicas')">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">🔢</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Matemáticas</h3>
+                                <p class="text-sm text-gray-500">15 mensajes nuevos</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm">Álgebra, geometría y cálculo</p>
+                    </div>
+                </div>
+
+                <!-- Canal Lenguaje -->
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer" onclick="openChannel('lenguaje')">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">📖</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Lenguaje</h3>
+                                <p class="text-sm text-gray-500">8 mensajes nuevos</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm">Literatura y gramática</p>
+                    </div>
+                </div>
+
+                <!-- Canal Química -->
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer" onclick="openChannel('quimica')">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">🧪</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Química</h3>
+                                <p class="text-sm text-gray-500">3 mensajes nuevos</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm">Química orgánica e inorgánica</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Channel Chat View (Hidden by default) -->
+            <div id="channel-chat" class="hidden mt-8">
+                <div class="bg-white rounded-lg shadow-sm border">
+                    <div class="p-4 border-b flex items-center justify-between">
+                        <div class="flex items-center">
+                            <button onclick="closeChannel()" class="mr-3 text-gray-400 hover:text-gray-600">←</button>
+                            <h3 id="channel-title" class="text-lg font-semibold"></h3>
+                        </div>
+                    </div>
+                    <div class="p-4 h-96 overflow-y-auto" id="chat-messages">
+                        <!-- Messages will be populated here -->
+                    </div>
+                    <div class="p-4 border-t">
+                        <div class="flex space-x-2">
+                            <input type="text" id="message-input" placeholder="Escribe un mensaje..." class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button onclick="sendMessage()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tareas Section -->
+        <div id="tareas-section" class="section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Mis Tareas</h2>
+                    <p class="text-gray-600">Gestiona tus tareas y entregas</p>
+                </div>
+                <button onclick="showNewTaskForm()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center">
+                    ➕ Nueva Tarea
+                </button>
+            </div>
+
+            <!-- New Task Form -->
+            <div id="new-task-form" class="hidden mb-6">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-lg font-semibold mb-4">Crear Nueva Tarea</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Título de la tarea</label>
+                            <input type="text" id="task-title" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Ensayo sobre literatura contemporánea">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+                            <textarea id="task-description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe los detalles de la tarea..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Materia</label>
+                            <select id="task-subject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="matematicas">Matemáticas</option>
+                                <option value="lenguaje">Lenguaje</option>
+                                <option value="quimica">Química</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Archivo adjunto</label>
+                            <input type="file" id="task-file" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="flex space-x-3">
+                            <button onclick="createTask()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Crear Tarea</button>
+                            <button onclick="hideNewTaskForm()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks List -->
+            <div id="tasks-container" class="space-y-4">
+                <!-- Sample tasks will be populated here -->
+            </div>
+        </div>
+
+        <!-- Calendario Section -->
+        <div id="calendario-section" class="section hidden">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Calendario Académico</h2>
+                <p class="text-gray-600">Haz clic en cualquier día para agregar una anotación</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-4 border-b flex items-center justify-between">
+                    <button onclick="previousMonth()" class="p-2 hover:bg-gray-100 rounded">←</button>
+                    <h3 id="calendar-month" class="text-lg font-semibold"></h3>
+                    <button onclick="nextMonth()" class="p-2 hover:bg-gray-100 rounded">→</button>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-7 gap-1 mb-2">
+                        <div class="text-center text-sm font-medium text-gray-500 py-2">Dom</div>
+                        <div class="text-center text-sm font-medium text-gray-500 py-2">Lun</div>
+                        <div class="text-center text-sm font-medium text-gray-500 py-2">Mar</div>
+                        <div class="text-center text-sm font-medium text-gray-500 py-2">Mié</div>
+                        <div class="text-center text-sm font-medium text-gray-500 py-2">Jue</div>
+                        <div class="text-center text-sm font-medium text-gray-500 py-2">Vie</div>
+                        <div class="text-center text-sm font-medium text-gray-500 py-2">Sáb</div>
+                    </div>
+                    <div id="calendar-grid" class="grid grid-cols-7 gap-1">
+                        <!-- Calendar days will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 w-96 max-w-90vw">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Acceso a AcadecoSCZ</h2>
+                <p class="text-gray-600">Inicia sesión o crea una cuenta para continuar</p>
+            </div>
+
+            <!-- Login/Register Toggle -->
+            <div class="flex mb-6 bg-gray-100 rounded-lg p-1">
+                <button id="login-tab" onclick="switchAuthTab('login')" class="flex-1 py-2 px-4 text-sm font-medium rounded-md bg-white text-blue-600 shadow-sm">
+                    Iniciar Sesión
+                </button>
+                <button id="register-tab" onclick="switchAuthTab('register')" class="flex-1 py-2 px-4 text-sm font-medium rounded-md text-gray-500 hover:text-gray-700">
+                    Crear Cuenta
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
+                    <input type="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="tu@email.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
+                    <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Mínimo 5 caracteres">
+                </div>
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button onclick="closeAuthModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                        Cancelar
+                    </button>
+                    <button onclick="handleLogin()" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                        Iniciar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="hidden space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
+                    <input type="email" id="register-email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="tu@email.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
+                    <input type="password" id="register-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entre 5 y 10 caracteres" maxlength="10">
+                    <div class="text-xs text-gray-500 mt-1">La contraseña debe tener entre 5 y 10 caracteres</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Confirmar contraseña</label>
+                    <input type="password" id="register-confirm-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Repite tu contraseña" maxlength="10">
+                </div>
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button onclick="closeAuthModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                        Cancelar
+                    </button>
+                    <button onclick="handleRegister()" class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
+                        Crear Cuenta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note Modal -->
+    <div id="note-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 w-96 max-w-90vw max-h-90vh overflow-y-auto">
+            <h3 class="text-lg font-semibold mb-4">Recordatorios para <span id="note-date"></span></h3>
+            
+            <!-- Existing Notes List -->
+            <div id="existing-notes" class="mb-6">
+                <!-- Existing notes will be populated here -->
+            </div>
+            
+            <!-- New Note Form -->
+            <div class="border-t pt-4">
+                <h4 class="text-md font-medium mb-3">Agregar nuevo recordatorio</h4>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Descripción del recordatorio</label>
+                        <textarea id="note-text" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Examen de álgebra, Entrega de ensayo..."></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Hora del recordatorio</label>
+                        <input type="time" id="note-time" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Materia</label>
+                        <select id="note-subject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Sin materia específica</option>
+                            <option value="matematicas">🔢 Matemáticas</option>
+                            <option value="lenguaje">📖 Lenguaje</option>
+                            <option value="quimica">🧪 Química</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end space-x-3 mt-6">
+                <button onclick="closeNoteModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cerrar</button>
+                <button onclick="addNote()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentSection = 'inicio';
+        let currentChannel = '';
+        let currentDate = new Date();
+        let selectedDay = null;
+        let tasks = [];
+        let notes = {}; // Now stores arrays of notes per day
+        let taskIdCounter = 1;
+        let isAcademicMode = false;
+        let studentProfile = {
+            name: '',
+            age: '',
+            course: '',
+            school: '',
+            profileImage: null
+        };
+        let userAccounts = {}; // Store user accounts
+        let currentUser = null;
+
+        // Sample data
+        const channelMessages = {
+            matematicas: [
+                { user: 'Prof. García', message: 'Recuerden que el examen de álgebra es el viernes', time: '10:30 AM' },
+                { user: 'Ana', message: '¿Alguien puede ayudarme con el ejercicio 15?', time: '11:15 AM' },
+                { user: 'Carlos', message: 'Yo te ayudo Ana, es sobre factorización', time: '11:20 AM' }
+            ],
+            lenguaje: [
+                { user: 'Prof. Martínez', message: 'El ensayo debe tener mínimo 500 palabras', time: '9:00 AM' },
+                { user: 'María', message: 'Ya terminé mi análisis de "Cien años de soledad"', time: '2:30 PM' }
+            ],
+            quimica: [
+                { user: 'Prof. López', message: 'Laboratorio cancelado por mantenimiento', time: '8:00 AM' },
+                { user: 'Pedro', message: 'Gracias por avisar profesor', time: '8:05 AM' }
+            ]
+        };
+
+        // Initialize sample tasks
+        tasks = [
+            {
+                id: 1,
+                title: 'Resolver ejercicios de álgebra',
+                description: 'Completar los ejercicios 1-20 del capítulo 5',
+                subject: 'matematicas',
+                fileName: 'ejercicios_algebra.pdf',
+                completed: false,
+                createdAt: new Date()
+            },
+            {
+                id: 2,
+                title: 'Ensayo sobre García Márquez',
+                description: 'Análisis literario de "El amor en los tiempos del cólera"',
+                subject: 'lenguaje',
+                fileName: 'ensayo_garcia_marquez.docx',
+                completed: true,
+                createdAt: new Date()
+            }
+        ];
+
+        // Navigation functions
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            
+            // Show selected section
+            document.getElementById(section + '-section').classList.remove('hidden');
+            
+            // Update navigation based on current mode
+            const navSelector = isAcademicMode ? '#academic-nav .nav-btn' : '#main-nav .nav-btn';
+            document.querySelectorAll(navSelector).forEach(btn => {
+                btn.classList.remove('border-blue-500', 'text-blue-600');
+                btn.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            if (event && event.target) {
+                event.target.classList.remove('border-transparent', 'text-gray-500');
+                event.target.classList.add('border-blue-500', 'text-blue-600');
+            }
+            
+            currentSection = section;
+            
+            // Initialize section-specific content
+            if (section === 'calendario') {
+                renderCalendar();
+            } else if (section === 'tareas') {
+                renderTasks();
+            } else if (section === 'progreso') {
+                updateProgressStats();
+            } else if (section === 'perfil') {
+                loadProfile();
+            }
+        }
+
+        // Authentication functions
+        function showAuthModal() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+            switchAuthTab('login'); // Default to login tab
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+            // Clear all form fields
+            document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
+            document.getElementById('register-email').value = '';
+            document.getElementById('register-password').value = '';
+            document.getElementById('register-confirm-password').value = '';
+        }
+
+        function switchAuthTab(tab) {
+            const loginTab = document.getElementById('login-tab');
+            const registerTab = document.getElementById('register-tab');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+
+            if (tab === 'login') {
+                loginTab.className = 'flex-1 py-2 px-4 text-sm font-medium rounded-md bg-white text-blue-600 shadow-sm';
+                registerTab.className = 'flex-1 py-2 px-4 text-sm font-medium rounded-md text-gray-500 hover:text-gray-700';
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                registerTab.className = 'flex-1 py-2 px-4 text-sm font-medium rounded-md bg-white text-green-600 shadow-sm';
+                loginTab.className = 'flex-1 py-2 px-4 text-sm font-medium rounded-md text-gray-500 hover:text-gray-700';
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            }
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 5 && password.length <= 10;
+        }
+
+        function handleRegister() {
+            const email = document.getElementById('register-email').value.trim();
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            // Validation
+            if (!email) {
+                alert('Por favor ingresa tu correo electrónico');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Por favor ingresa un correo electrónico válido');
+                return;
+            }
+
+            if (!password) {
+                alert('Por favor ingresa una contraseña');
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                alert('La contraseña debe tener entre 5 y 10 caracteres');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+
+            // Check if user already exists
+            if (userAccounts[email]) {
+                alert('Ya existe una cuenta con este correo electrónico');
+                return;
+            }
+
+            // Create new account
+            userAccounts[email] = {
+                email: email,
+                password: password,
+                createdAt: new Date()
+            };
+
+            alert('¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.');
+            switchAuthTab('login');
+            document.getElementById('login-email').value = email;
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            // Validation
+            if (!email) {
+                alert('Por favor ingresa tu correo electrónico');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Por favor ingresa un correo electrónico válido');
+                return;
+            }
+
+            if (!password) {
+                alert('Por favor ingresa tu contraseña');
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                alert('La contraseña debe tener entre 5 y 10 caracteres');
+                return;
+            }
+
+            // Check credentials
+            const account = userAccounts[email];
+            if (!account) {
+                alert('No existe una cuenta con este correo electrónico');
+                return;
+            }
+
+            if (account.password !== password) {
+                alert('Contraseña incorrecta');
+                return;
+            }
+
+            // Successful login
+            currentUser = email;
+            closeAuthModal();
+            enterAcademicMode();
+        }
+
+        function enterAcademicMode() {
+            isAcademicMode = true;
+            document.getElementById('main-nav').classList.add('hidden');
+            document.getElementById('academic-nav').classList.remove('hidden');
+            showSection('progreso');
+        }
+
+        function goBackToMain() {
+            isAcademicMode = false;
+            document.getElementById('academic-nav').classList.add('hidden');
+            document.getElementById('main-nav').classList.remove('hidden');
+            showSection('inicio');
+        }
+
+        // Profile functions
+        function loadProfile() {
+            document.getElementById('student-name').value = studentProfile.name;
+            document.getElementById('student-age').value = studentProfile.age;
+            document.getElementById('student-course').value = studentProfile.course;
+            document.getElementById('student-school').value = studentProfile.school;
+            updateProfileDisplay();
+            updateProfileImageDisplay();
+        }
+
+        function saveProfile() {
+            studentProfile.name = document.getElementById('student-name').value.trim();
+            studentProfile.age = document.getElementById('student-age').value;
+            studentProfile.course = document.getElementById('student-course').value;
+            studentProfile.school = document.getElementById('student-school').value.trim();
+            
+            updateProfileDisplay();
+            updateHeaderInfo();
+            
+            alert('¡Perfil guardado exitosamente!');
+        }
+
+        function resetProfile() {
+            if (confirm('¿Estás seguro de que quieres restablecer tu perfil?')) {
+                studentProfile = { name: '', age: '', course: '', school: '', profileImage: null };
+                loadProfile();
+                updateHeaderInfo();
+            }
+        }
+
+        function handleProfileImageChange() {
+            const fileInput = document.getElementById('profile-image-input');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    studentProfile.profileImage = e.target.result;
+                    updateProfileImageDisplay();
+                    updateHeaderInfo();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeProfileImage() {
+            studentProfile.profileImage = null;
+            updateProfileImageDisplay();
+            updateHeaderInfo();
+            document.getElementById('profile-image-input').value = '';
+        }
+
+        function updateProfileImageDisplay() {
+            const imageDisplay = document.getElementById('profile-image-display');
+            const imageText = document.getElementById('profile-image-text');
+            const previewImageDisplay = document.getElementById('profile-image-display');
+            const previewImageText = document.getElementById('profile-image-text');
+            
+            if (studentProfile.profileImage) {
+                imageDisplay.src = studentProfile.profileImage;
+                imageDisplay.classList.remove('hidden');
+                imageText.classList.add('hidden');
+                previewImageDisplay.src = studentProfile.profileImage;
+                previewImageDisplay.classList.remove('hidden');
+                previewImageText.classList.add('hidden');
+            } else {
+                imageDisplay.classList.add('hidden');
+                imageText.classList.remove('hidden');
+                previewImageDisplay.classList.add('hidden');
+                previewImageText.classList.remove('hidden');
+                const displayName = studentProfile.name || 'Estudiante';
+                imageText.textContent = displayName.charAt(0).toUpperCase();
+                previewImageText.textContent = displayName.charAt(0).toUpperCase();
+            }
+        }
+
+        function updateProfileDisplay() {
+            const displayName = studentProfile.name || 'Estudiante';
+            const displayInfo = studentProfile.course && studentProfile.school 
+                ? `${studentProfile.course} - ${studentProfile.school}`
+                : 'Completa tu información del perfil';
+            
+            document.getElementById('profile-display-name').textContent = displayName;
+            document.getElementById('profile-display-info').textContent = displayInfo;
+            
+            // Update avatar in profile section
+            const profileAvatar = document.querySelector('#perfil-section .w-24.h-24');
+            if (profileAvatar) {
+                const avatarImg = profileAvatar.querySelector('img');
+                const avatarText = profileAvatar.querySelector('span');
+                
+                if (studentProfile.profileImage) {
+                    if (!avatarImg) {
+                        const img = document.createElement('img');
+                        img.className = 'w-full h-full object-cover';
+                        img.alt = 'Foto de perfil';
+                        profileAvatar.appendChild(img);
+                    }
+                    profileAvatar.querySelector('img').src = studentProfile.profileImage;
+                    profileAvatar.querySelector('img').classList.remove('hidden');
+                    if (avatarText) avatarText.classList.add('hidden');
+                } else {
+                    if (avatarImg) avatarImg.classList.add('hidden');
+                    if (avatarText) {
+                        avatarText.classList.remove('hidden');
+                        avatarText.textContent = displayName.charAt(0).toUpperCase();
+                    }
+                }
+            }
+        }
+
+        function updateHeaderInfo() {
+            const displayName = studentProfile.name || 'Estudiante';
+            document.getElementById('header-student-name').textContent = displayName;
+            
+            const headerAvatar = document.getElementById('header-avatar');
+            if (studentProfile.profileImage) {
+                headerAvatar.style.backgroundImage = `url(${studentProfile.profileImage})`;
+                headerAvatar.style.backgroundSize = 'cover';
+                headerAvatar.style.backgroundPosition = 'center';
+                headerAvatar.textContent = '';
+            } else {
+                headerAvatar.style.backgroundImage = '';
+                headerAvatar.textContent = displayName.charAt(0).toUpperCase();
+            }
+        }
+
+        // Stats update functions
+        function updateProgressStats() {
+            // General stats
+            document.getElementById('total-tasks-progress').textContent = tasks.length;
+            document.getElementById('completed-tasks-progress').textContent = tasks.filter(t => t.completed).length;
+            
+            // Count total notes (sum of all notes arrays)
+            let totalNotes = 0;
+            Object.values(notes).forEach(dayNotes => {
+                if (Array.isArray(dayNotes)) {
+                    totalNotes += dayNotes.length;
+                } else if (dayNotes) {
+                    totalNotes += 1; // Old format compatibility
+                }
+            });
+            document.getElementById('total-notes-progress').textContent = totalNotes;
+            
+            // Subject-specific progress
+            const subjects = ['matematicas', 'lenguaje', 'quimica'];
+            subjects.forEach(subject => {
+                const subjectTasks = tasks.filter(t => t.subject === subject);
+                const completedSubjectTasks = subjectTasks.filter(t => t.completed);
+                const percentage = subjectTasks.length > 0 ? (completedSubjectTasks.length / subjectTasks.length) * 100 : 0;
+                
+                const progressText = `${completedSubjectTasks.length}/${subjectTasks.length}`;
+                const subjectMap = {
+                    'matematicas': 'math',
+                    'lenguaje': 'lang',
+                    'quimica': 'chem'
+                };
+                
+                document.getElementById(`${subjectMap[subject]}-progress`).textContent = progressText;
+                document.getElementById(`${subjectMap[subject]}-bar`).style.width = `${percentage}%`;
+            });
+        }
+
+        // Channel functions
+        function openChannel(channel) {
+            currentChannel = channel;
+            const channelNames = {
+                matematicas: '🔢 Matemáticas',
+                lenguaje: '📖 Lenguaje',
+                quimica: '🧪 Química'
+            };
+            
+            document.getElementById('channel-title').textContent = channelNames[channel];
+            document.getElementById('channel-chat').classList.remove('hidden');
+            
+            // Load messages
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.innerHTML = '';
+            
+            channelMessages[channel].forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'mb-4';
+                messageDiv.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-sm font-medium">
+                            ${msg.user.charAt(0)}
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-medium text-sm">${msg.user}</span>
+                                <span class="text-xs text-gray-500">${msg.time}</span>
+                            </div>
+                            <p class="text-sm text-gray-700 mt-1">${msg.message}</p>
+                        </div>
+                    </div>
+                `;
+                messagesContainer.appendChild(messageDiv);
+            });
+            
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function closeChannel() {
+            document.getElementById('channel-chat').classList.add('hidden');
+            currentChannel = '';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            
+            if (message && currentChannel) {
+                const newMessage = {
+                    user: 'Tú',
+                    message: message,
+                    time: new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+                };
+                
+                channelMessages[currentChannel].push(newMessage);
+                
+                const messagesContainer = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'mb-4';
+                messageDiv.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-medium text-white">
+                            T
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-medium text-sm">Tú</span>
+                                <span class="text-xs text-gray-500">${newMessage.time}</span>
+                            </div>
+                            <p class="text-sm text-gray-700 mt-1">${message}</p>
+                        </div>
+                    </div>
+                `;
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                input.value = '';
+            }
+        }
+
+        // Task functions
+        function showNewTaskForm() {
+            document.getElementById('new-task-form').classList.remove('hidden');
+        }
+
+        function hideNewTaskForm() {
+            document.getElementById('new-task-form').classList.add('hidden');
+            // Clear form
+            document.getElementById('task-title').value = '';
+            document.getElementById('task-description').value = '';
+            document.getElementById('task-file').value = '';
+        }
+
+        function createTask() {
+            const title = document.getElementById('task-title').value.trim();
+            const description = document.getElementById('task-description').value.trim();
+            const subject = document.getElementById('task-subject').value;
+            const fileInput = document.getElementById('task-file');
+            
+            if (!title) {
+                alert('Por favor ingresa un título para la tarea');
+                return;
+            }
+            
+            const newTask = {
+                id: taskIdCounter++,
+                title: title,
+                description: description,
+                subject: subject,
+                fileName: fileInput.files[0] ? fileInput.files[0].name : null,
+                completed: false,
+                createdAt: new Date()
+            };
+            
+            tasks.unshift(newTask);
+            renderTasks();
+            hideNewTaskForm();
+            if (isAcademicMode) {
+                updateProgressStats();
+            }
+        }
+
+        function renderTasks() {
+            const container = document.getElementById('tasks-container');
+            container.innerHTML = '';
+            
+            if (tasks.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="text-gray-400 text-6xl mb-4">📋</div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">No hay tareas</h3>
+                        <p class="text-gray-500">Crea tu primera tarea haciendo clic en "Nueva Tarea"</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            tasks.forEach(task => {
+                const subjectColors = {
+                    matematicas: 'bg-blue-100 text-blue-800',
+                    lenguaje: 'bg-green-100 text-green-800',
+                    quimica: 'bg-purple-100 text-purple-800'
+                };
+                
+                const subjectNames = {
+                    matematicas: 'Matemáticas',
+                    lenguaje: 'Lenguaje',
+                    quimica: 'Química'
+                };
+                
+                const taskDiv = document.createElement('div');
+                taskDiv.className = `task-card bg-white rounded-lg shadow-sm border p-6 ${task.completed ? 'opacity-75' : ''}`;
+                taskDiv.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <input type="checkbox" ${task.completed ? 'checked' : ''} 
+                                       onchange="toggleTask(${task.id})" 
+                                       class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                <h3 class="text-lg font-semibold ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}">${task.title}</h3>
+                                <span class="px-2 py-1 text-xs font-medium rounded-full ${subjectColors[task.subject]}">
+                                    ${subjectNames[task.subject]}
+                                </span>
+                            </div>
+                            ${task.description ? `<p class="text-gray-600 mb-3">${task.description}</p>` : ''}
+                            ${task.fileName ? `
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="mr-2">📎</span>
+                                    <span>${task.fileName}</span>
+                                </div>
+                            ` : ''}
+                            <div class="text-xs text-gray-400">
+                                Creada el ${task.createdAt.toLocaleDateString('es-ES')}
+                            </div>
+                        </div>
+                        <button onclick="deleteTask(${task.id})" class="text-gray-400 hover:text-red-500 ml-4">
+                            🗑️
+                        </button>
+                    </div>
+                `;
+                container.appendChild(taskDiv);
+            });
+        }
+
+        function toggleTask(taskId) {
+            const task = tasks.find(t => t.id === taskId);
+            if (task) {
+                task.completed = !task.completed;
+                renderTasks();
+                if (isAcademicMode) {
+                    updateProgressStats();
+                }
+            }
+        }
+
+        function deleteTask(taskId) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta tarea?')) {
+                tasks = tasks.filter(t => t.id !== taskId);
+                renderTasks();
+                if (isAcademicMode) {
+                    updateProgressStats();
+                }
+            }
+        }
+
+        // Calendar functions
+        function renderCalendar() {
+            const monthNames = [
+                'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+            ];
+            
+            document.getElementById('calendar-month').textContent = 
+                `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = '';
+            
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+            
+            // Subject colors for calendar days
+            const subjectColors = {
+                matematicas: 'bg-blue-100 border-blue-300 text-blue-800',
+                lenguaje: 'bg-red-100 border-red-300 text-red-800',
+                quimica: 'bg-yellow-100 border-yellow-300 text-yellow-800'
+            };
+            
+            for (let i = 0; i < 42; i++) {
+                const cellDate = new Date(startDate);
+                cellDate.setDate(startDate.getDate() + i);
+                
+                const dateKey = cellDate.toDateString();
+                let dayNotes = notes[dateKey];
+                
+                // Convert old format to new format
+                if (dayNotes && !Array.isArray(dayNotes)) {
+                    if (typeof dayNotes === 'string') {
+                        dayNotes = [{ text: dayNotes, time: '', subject: '', id: Date.now() }];
+                    } else {
+                        dayNotes = [{ ...dayNotes, id: Date.now() }];
+                    }
+                    notes[dateKey] = dayNotes;
+                }
+                
+                let dayClasses = 'calendar-day border p-2 cursor-pointer ';
+                
+                if (cellDate.getMonth() !== currentDate.getMonth()) {
+                    dayClasses += 'text-gray-400 bg-gray-50 border-gray-200';
+                } else if (dayNotes && dayNotes.length > 0) {
+                    // Get unique subjects from all notes for this day
+                    const subjects = [...new Set(dayNotes.map(note => note.subject).filter(s => s))];
+                    
+                    if (subjects.length === 1) {
+                        // Single subject
+                        dayClasses += subjectColors[subjects[0]];
+                    } else if (subjects.length > 1) {
+                        // Multiple subjects - create gradient effect
+                        const gradientColors = subjects.map(subject => {
+                            switch(subject) {
+                                case 'matematicas': return '#dbeafe'; // blue-100
+                                case 'lenguaje': return '#fee2e2'; // red-100
+                                case 'quimica': return '#fef3c7'; // yellow-100
+                                default: return '#f3f4f6'; // gray-100
+                            }
+                        });
+                        
+                        if (gradientColors.length === 2) {
+                            dayClasses += `border-gray-400`;
+                        } else {
+                            dayClasses += `border-gray-400`;
+                        }
+                    } else {
+                        // Notes without subjects
+                        dayClasses += 'bg-gray-100 border-gray-300 hover:bg-gray-150';
+                    }
+                } else {
+                    dayClasses += 'border-gray-200 hover:bg-gray-50';
+                }
+                
+                const dayDiv = document.createElement('div');
+                dayDiv.className = dayClasses;
+                
+                // Apply gradient background for multiple subjects
+                if (dayNotes && dayNotes.length > 0) {
+                    const subjects = [...new Set(dayNotes.map(note => note.subject).filter(s => s))];
+                    if (subjects.length > 1) {
+                        const gradientColors = subjects.map(subject => {
+                            switch(subject) {
+                                case 'matematicas': return '#dbeafe';
+                                case 'lenguaje': return '#fee2e2';
+                                case 'quimica': return '#fef3c7';
+                                default: return '#f3f4f6';
+                            }
+                        });
+                        
+                        if (gradientColors.length === 2) {
+                            dayDiv.style.background = `linear-gradient(45deg, ${gradientColors[0]} 50%, ${gradientColors[1]} 50%)`;
+                        } else if (gradientColors.length === 3) {
+                            dayDiv.style.background = `linear-gradient(120deg, ${gradientColors[0]} 33%, ${gradientColors[1]} 33%, ${gradientColors[1]} 66%, ${gradientColors[2]} 66%)`;
+                        }
+                    }
+                }
+                
+                let noteDisplay = '';
+                if (dayNotes && dayNotes.length > 0) {
+                    const firstNote = dayNotes[0];
+                    const timeDisplay = firstNote.time ? ` - ${firstNote.time}` : '';
+                    const subjectIcon = firstNote.subject === 'matematicas' ? '🔢' : 
+                                       firstNote.subject === 'lenguaje' ? '📖' : 
+                                       firstNote.subject === 'quimica' ? '🧪' : '📝';
+                    
+                    const displayText = dayNotes.length > 1 ? 
+                        `${firstNote.text.substring(0, 10)}... (+${dayNotes.length - 1})` :
+                        `${firstNote.text.substring(0, 15)}${firstNote.text.length > 15 ? '...' : ''}`;
+                    
+                    noteDisplay = `
+                        <div class="text-xs mt-1 truncate font-medium">
+                            ${subjectIcon} ${displayText}
+                        </div>
+                        ${timeDisplay ? `<div class="text-xs font-bold">${firstNote.time}</div>` : ''}
+                    `;
+                }
+                
+                dayDiv.innerHTML = `
+                    <div class="text-sm font-medium">${cellDate.getDate()}</div>
+                    ${dayNotes && dayNotes.length > 0 ? '<div class="note-indicator"></div>' : ''}
+                    ${noteDisplay}
+                `;
+                
+                dayDiv.onclick = () => openNoteModal(cellDate);
+                grid.appendChild(dayDiv);
+            }
+        }
+
+        function previousMonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        }
+
+        function nextMonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        }
+
+        function openNoteModal(date) {
+            selectedDay = date;
+            const dateKey = date.toDateString();
+            let dayNotes = notes[dateKey];
+            
+            // Convert old format to new format if needed
+            if (dayNotes && !Array.isArray(dayNotes)) {
+                if (typeof dayNotes === 'string') {
+                    dayNotes = [{ text: dayNotes, time: '', subject: '', id: Date.now() }];
+                } else {
+                    dayNotes = [{ ...dayNotes, id: Date.now() }];
+                }
+                notes[dateKey] = dayNotes;
+            }
+            
+            if (!dayNotes) {
+                dayNotes = [];
+                notes[dateKey] = dayNotes;
+            }
+            
+            document.getElementById('note-date').textContent = 
+                date.toLocaleDateString('es-ES', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+            
+            // Clear form for new note
+            document.getElementById('note-text').value = '';
+            document.getElementById('note-time').value = '';
+            document.getElementById('note-subject').value = '';
+            
+            // Display existing notes
+            displayExistingNotes(dayNotes);
+            
+            document.getElementById('note-modal').classList.remove('hidden');
+        }
+
+        function displayExistingNotes(dayNotes) {
+            const container = document.getElementById('existing-notes');
+            container.innerHTML = '';
+            
+            if (dayNotes.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-sm">No hay recordatorios para este día</p>';
+                return;
+            }
+            
+            dayNotes.forEach((note, index) => {
+                const subjectIcon = note.subject === 'matematicas' ? '🔢' : 
+                                   note.subject === 'lenguaje' ? '📖' : 
+                                   note.subject === 'quimica' ? '🧪' : '📝';
+                
+                const subjectName = note.subject === 'matematicas' ? 'Matemáticas' : 
+                                   note.subject === 'lenguaje' ? 'Lenguaje' : 
+                                   note.subject === 'quimica' ? 'Química' : 'Sin materia';
+                
+                const noteDiv = document.createElement('div');
+                noteDiv.className = 'bg-gray-50 rounded-lg p-3 mb-3 border';
+                noteDiv.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-lg">${subjectIcon}</span>
+                                <span class="text-sm font-medium text-gray-600">${subjectName}</span>
+                                ${note.time ? `<span class="text-sm font-bold text-gray-800">${note.time}</span>` : ''}
+                            </div>
+                            <p class="text-sm text-gray-800">${note.text}</p>
+                        </div>
+                        <button onclick="removeNote(${index})" class="text-red-500 hover:text-red-700 ml-2 text-sm">
+                            🗑️
+                        </button>
+                    </div>
+                `;
+                container.appendChild(noteDiv);
+            });
+        }
+
+        function closeNoteModal() {
+            document.getElementById('note-modal').classList.add('hidden');
+            selectedDay = null;
+        }
+
+        function addNote() {
+            if (selectedDay) {
+                const noteText = document.getElementById('note-text').value.trim();
+                const noteTime = document.getElementById('note-time').value;
+                const noteSubject = document.getElementById('note-subject').value;
+                const dateKey = selectedDay.toDateString();
+                
+                if (!noteText) {
+                    alert('Por favor ingresa una descripción para el recordatorio');
+                    return;
+                }
+                
+                if (!notes[dateKey]) {
+                    notes[dateKey] = [];
+                }
+                
+                const newNote = {
+                    text: noteText,
+                    time: noteTime,
+                    subject: noteSubject,
+                    id: Date.now()
+                };
+                
+                notes[dateKey].push(newNote);
+                
+                // Clear form
+                document.getElementById('note-text').value = '';
+                document.getElementById('note-time').value = '';
+                document.getElementById('note-subject').value = '';
+                
+                // Refresh display
+                displayExistingNotes(notes[dateKey]);
+                renderCalendar();
+                
+                if (isAcademicMode) {
+                    updateProgressStats();
+                }
+            }
+        }
+
+        function removeNote(noteIndex) {
+            if (selectedDay && confirm('¿Estás seguro de que quieres eliminar este recordatorio?')) {
+                const dateKey = selectedDay.toDateString();
+                let dayNotes = notes[dateKey];
+                
+                if (dayNotes && Array.isArray(dayNotes) && dayNotes.length > noteIndex) {
+                    dayNotes.splice(noteIndex, 1);
+                    
+                    // Remove the day entry if no notes left
+                    if (dayNotes.length === 0) {
+                        delete notes[dateKey];
+                        dayNotes = [];
+                    } else {
+                        notes[dateKey] = dayNotes;
+                    }
+                    
+                    // Refresh display
+                    displayExistingNotes(dayNotes);
+                    renderCalendar();
+                    
+                    if (isAcademicMode) {
+                        updateProgressStats();
+                    }
+                }
+            }
+        }
+
+        // Event listeners
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize the app
+        renderTasks();
+        renderCalendar();
+        updateProfileDisplay();
+        updateHeaderInfo();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98002c44a4d3b4fe',t:'MTc1ODAyMzcwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
