@@ -414,59 +414,79 @@
 
         <!-- Canales Section -->
         <div id="canales-section" class="section hidden">
-            <div class="mb-6">
-                <h2 class="text-2xl font-bold text-gray-900 mb-2">Canales por Materia</h2>
-                <p class="text-gray-600">Selecciona una materia para ver las conversaciones y recursos</p>
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Canales por Materia</h2>
+                    <p class="text-gray-600">Selecciona una materia para ver las conversaciones y recursos</p>
+                </div>
+                <button onclick="showNewSubjectForm()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center">
+                    ➕ Nueva Materia
+                </button>
+            </div>
+
+            <!-- New Subject Form -->
+            <div id="new-subject-form" class="hidden mb-6">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-lg font-semibold mb-4">Crear Nueva Materia</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nombre de la materia</label>
+                            <input type="text" id="subject-name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Historia, Física, Inglés...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Descripción</label>
+                            <input type="text" id="subject-description" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Breve descripción de la materia">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Foto de perfil de la materia</label>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden" id="subject-image-preview">
+                                    <span class="text-2xl" id="subject-emoji-preview">📚</span>
+                                    <img id="subject-image-display" class="w-full h-full object-cover hidden" alt="Foto de materia">
+                                </div>
+                                <div class="flex-1">
+                                    <input type="file" id="subject-image-input" accept="image/*" class="hidden" onchange="handleSubjectImageChange()">
+                                    <button type="button" onclick="document.getElementById('subject-image-input').click()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors mr-2">
+                                        Subir imagen
+                                    </button>
+                                    <button type="button" onclick="showEmojiPicker()" class="px-4 py-2 bg-yellow-200 text-yellow-700 rounded-lg hover:bg-yellow-300 transition-colors">
+                                        Elegir emoji
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Emoji Picker -->
+                            <div id="emoji-picker" class="hidden mt-3 p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm font-medium text-gray-700 mb-2">Selecciona un emoji:</p>
+                                <div class="grid grid-cols-8 gap-2">
+                                    <button type="button" onclick="selectEmoji('📚')" class="text-2xl hover:bg-gray-200 rounded p-1">📚</button>
+                                    <button type="button" onclick="selectEmoji('🔬')" class="text-2xl hover:bg-gray-200 rounded p-1">🔬</button>
+                                    <button type="button" onclick="selectEmoji('🎨')" class="text-2xl hover:bg-gray-200 rounded p-1">🎨</button>
+                                    <button type="button" onclick="selectEmoji('🎵')" class="text-2xl hover:bg-gray-200 rounded p-1">🎵</button>
+                                    <button type="button" onclick="selectEmoji('⚽')" class="text-2xl hover:bg-gray-200 rounded p-1">⚽</button>
+                                    <button type="button" onclick="selectEmoji('🌍')" class="text-2xl hover:bg-gray-200 rounded p-1">🌍</button>
+                                    <button type="button" onclick="selectEmoji('💻')" class="text-2xl hover:bg-gray-200 rounded p-1">💻</button>
+                                    <button type="button" onclick="selectEmoji('🏛️')" class="text-2xl hover:bg-gray-200 rounded p-1">🏛️</button>
+                                    <button type="button" onclick="selectEmoji('🔭')" class="text-2xl hover:bg-gray-200 rounded p-1">🔭</button>
+                                    <button type="button" onclick="selectEmoji('🧬')" class="text-2xl hover:bg-gray-200 rounded p-1">🧬</button>
+                                    <button type="button" onclick="selectEmoji('📐')" class="text-2xl hover:bg-gray-200 rounded p-1">📐</button>
+                                    <button type="button" onclick="selectEmoji('🗺️')" class="text-2xl hover:bg-gray-200 rounded p-1">🗺️</button>
+                                    <button type="button" onclick="selectEmoji('🎭')" class="text-2xl hover:bg-gray-200 rounded p-1">🎭</button>
+                                    <button type="button" onclick="selectEmoji('🏃')" class="text-2xl hover:bg-gray-200 rounded p-1">🏃</button>
+                                    <button type="button" onclick="selectEmoji('🍎')" class="text-2xl hover:bg-gray-200 rounded p-1">🍎</button>
+                                    <button type="button" onclick="selectEmoji('🌱')" class="text-2xl hover:bg-gray-200 rounded p-1">🌱</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button onclick="createSubject()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Crear Materia</button>
+                            <button onclick="hideNewSubjectForm()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Canal Matemáticas -->
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer" onclick="openChannel('matematicas')">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <span class="text-2xl">🔢</span>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900">Matemáticas</h3>
-                                <p class="text-sm text-gray-500">15 mensajes nuevos</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">Álgebra, geometría y cálculo</p>
-                    </div>
-                </div>
-
-                <!-- Canal Lenguaje -->
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer" onclick="openChannel('lenguaje')">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                <span class="text-2xl">📖</span>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900">Lenguaje</h3>
-                                <p class="text-sm text-gray-500">8 mensajes nuevos</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">Literatura y gramática</p>
-                    </div>
-                </div>
-
-                <!-- Canal Química -->
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer" onclick="openChannel('quimica')">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                                <span class="text-2xl">🧪</span>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900">Química</h3>
-                                <p class="text-sm text-gray-500">3 mensajes nuevos</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">Química orgánica e inorgánica</p>
-                    </div>
-                </div>
+            <div id="subjects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Default subjects will be rendered here -->
             </div>
 
             <!-- Channel Chat View (Hidden by default) -->
@@ -519,10 +539,12 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Materia</label>
                             <select id="task-subject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option value="matematicas">Matemáticas</option>
-                                <option value="lenguaje">Lenguaje</option>
-                                <option value="quimica">Química</option>
+                                <!-- Options will be populated dynamically -->
                             </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de entrega</label>
+                            <input type="date" id="task-due-date" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Archivo adjunto</label>
@@ -666,9 +688,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Materia</label>
                         <select id="note-subject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="">Sin materia específica</option>
-                            <option value="matematicas">🔢 Matemáticas</option>
-                            <option value="lenguaje">📖 Lenguaje</option>
-                            <option value="quimica">🧪 Química</option>
+                            <!-- Options will be populated dynamically -->
                         </select>
                     </div>
                 </div>
@@ -700,6 +720,7 @@
         };
         let userAccounts = {}; // Store user accounts
         let currentUser = null;
+        let customSubjects = {}; // Store custom subjects with their images
 
         // Sample data
         const channelMessages = {
@@ -718,6 +739,34 @@
             ]
         };
 
+        // Default subjects configuration
+        const defaultSubjects = {
+            matematicas: {
+                name: 'Matemáticas',
+                description: 'Álgebra, geometría y cálculo',
+                emoji: '🔢',
+                bgColor: 'bg-blue-100',
+                isDefault: true
+            },
+            lenguaje: {
+                name: 'Lenguaje',
+                description: 'Literatura y gramática',
+                emoji: '📖',
+                bgColor: 'bg-green-100',
+                isDefault: true
+            },
+            quimica: {
+                name: 'Química',
+                description: 'Química orgánica e inorgánica',
+                emoji: '🧪',
+                bgColor: 'bg-purple-100',
+                isDefault: true
+            }
+        };
+
+        let currentSubjectImage = null;
+        let currentSubjectEmoji = '📚';
+
         // Initialize sample tasks
         tasks = [
             {
@@ -727,7 +776,8 @@
                 subject: 'matematicas',
                 fileName: 'ejercicios_algebra.pdf',
                 completed: false,
-                createdAt: new Date()
+                createdAt: new Date(),
+                dueDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) // 3 días desde hoy
             },
             {
                 id: 2,
@@ -736,7 +786,8 @@
                 subject: 'lenguaje',
                 fileName: 'ensayo_garcia_marquez.docx',
                 completed: true,
-                createdAt: new Date()
+                createdAt: new Date(),
+                dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 días desde hoy
             }
         ];
 
@@ -771,6 +822,8 @@
                 updateProgressStats();
             } else if (section === 'perfil') {
                 loadProfile();
+            } else if (section === 'canales') {
+                renderSubjects();
             }
         }
 
@@ -1076,9 +1129,9 @@
             });
             document.getElementById('total-notes-progress').textContent = totalNotes;
             
-            // Subject-specific progress
-            const subjects = ['matematicas', 'lenguaje', 'quimica'];
-            subjects.forEach(subject => {
+            // Subject-specific progress (only for default subjects in progress view)
+            const defaultSubjectKeys = ['matematicas', 'lenguaje', 'quimica'];
+            defaultSubjectKeys.forEach(subject => {
                 const subjectTasks = tasks.filter(t => t.subject === subject);
                 const completedSubjectTasks = subjectTasks.filter(t => t.completed);
                 const percentage = subjectTasks.length > 0 ? (completedSubjectTasks.length / subjectTasks.length) * 100 : 0;
@@ -1095,16 +1148,184 @@
             });
         }
 
+        // Subject management functions
+        function renderSubjects() {
+            const container = document.getElementById('subjects-container');
+            container.innerHTML = '';
+            
+            // Render default subjects
+            Object.keys(defaultSubjects).forEach(subjectKey => {
+                const subject = defaultSubjects[subjectKey];
+                renderSubjectCard(subjectKey, subject, container);
+            });
+            
+            // Render custom subjects
+            Object.keys(customSubjects).forEach(subjectKey => {
+                const subject = customSubjects[subjectKey];
+                renderSubjectCard(subjectKey, subject, container);
+            });
+        }
+
+        function renderSubjectCard(subjectKey, subject, container) {
+            const subjectDiv = document.createElement('div');
+            subjectDiv.className = 'bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer relative';
+            
+            const messageCount = channelMessages[subjectKey] ? channelMessages[subjectKey].length : 0;
+            
+            subjectDiv.innerHTML = `
+                <div class="p-6" onclick="openChannel('${subjectKey}')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 ${subject.bgColor || 'bg-gray-100'} rounded-lg flex items-center justify-center overflow-hidden">
+                            ${subject.image ? 
+                                `<img src="${subject.image}" alt="${subject.name}" class="w-full h-full object-cover">` :
+                                `<span class="text-2xl">${subject.emoji}</span>`
+                            }
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-semibold text-gray-900">${subject.name}</h3>
+                            <p class="text-sm text-gray-500">${messageCount} mensajes</p>
+                        </div>
+                        ${!subject.isDefault ? `
+                            <button onclick="event.stopPropagation(); deleteSubject('${subjectKey}')" class="text-gray-400 hover:text-red-500 ml-2">
+                                🗑️
+                            </button>
+                        ` : ''}
+                    </div>
+                    <p class="text-gray-600 text-sm">${subject.description}</p>
+                </div>
+            `;
+            
+            container.appendChild(subjectDiv);
+        }
+
+        function showNewSubjectForm() {
+            document.getElementById('new-subject-form').classList.remove('hidden');
+            resetSubjectForm();
+        }
+
+        function hideNewSubjectForm() {
+            document.getElementById('new-subject-form').classList.add('hidden');
+            document.getElementById('emoji-picker').classList.add('hidden');
+            resetSubjectForm();
+        }
+
+        function resetSubjectForm() {
+            document.getElementById('subject-name').value = '';
+            document.getElementById('subject-description').value = '';
+            document.getElementById('subject-image-input').value = '';
+            currentSubjectImage = null;
+            currentSubjectEmoji = '📚';
+            updateSubjectImagePreview();
+        }
+
+        function handleSubjectImageChange() {
+            const fileInput = document.getElementById('subject-image-input');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentSubjectImage = e.target.result;
+                    updateSubjectImagePreview();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function showEmojiPicker() {
+            const picker = document.getElementById('emoji-picker');
+            picker.classList.toggle('hidden');
+        }
+
+        function selectEmoji(emoji) {
+            currentSubjectEmoji = emoji;
+            currentSubjectImage = null; // Clear image when emoji is selected
+            document.getElementById('subject-image-input').value = '';
+            updateSubjectImagePreview();
+            document.getElementById('emoji-picker').classList.add('hidden');
+        }
+
+        function updateSubjectImagePreview() {
+            const imageDisplay = document.getElementById('subject-image-display');
+            const emojiPreview = document.getElementById('subject-emoji-preview');
+            
+            if (currentSubjectImage) {
+                imageDisplay.src = currentSubjectImage;
+                imageDisplay.classList.remove('hidden');
+                emojiPreview.classList.add('hidden');
+            } else {
+                imageDisplay.classList.add('hidden');
+                emojiPreview.classList.remove('hidden');
+                emojiPreview.textContent = currentSubjectEmoji;
+            }
+        }
+
+        function createSubject() {
+            const name = document.getElementById('subject-name').value.trim();
+            const description = document.getElementById('subject-description').value.trim();
+            
+            if (!name) {
+                alert('Por favor ingresa el nombre de la materia');
+                return;
+            }
+            
+            // Generate a unique key for the subject
+            const subjectKey = name.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+            
+            // Check if subject already exists
+            if (defaultSubjects[subjectKey] || customSubjects[subjectKey]) {
+                alert('Ya existe una materia con ese nombre');
+                return;
+            }
+            
+            // Create new subject
+            const newSubject = {
+                name: name,
+                description: description || 'Materia personalizada',
+                emoji: currentSubjectEmoji,
+                image: currentSubjectImage,
+                bgColor: 'bg-gray-100',
+                isDefault: false
+            };
+            
+            customSubjects[subjectKey] = newSubject;
+            channelMessages[subjectKey] = []; // Initialize empty message array
+            
+            renderSubjects();
+            hideNewSubjectForm();
+            
+            alert(`¡Materia "${name}" creada exitosamente!`);
+        }
+
+        function deleteSubject(subjectKey) {
+            const subject = customSubjects[subjectKey];
+            if (subject && confirm(`¿Estás seguro de que quieres eliminar la materia "${subject.name}"?`)) {
+                delete customSubjects[subjectKey];
+                delete channelMessages[subjectKey];
+                renderSubjects();
+            }
+        }
+
         // Channel functions
         function openChannel(channel) {
             currentChannel = channel;
-            const channelNames = {
-                matematicas: '🔢 Matemáticas',
-                lenguaje: '📖 Lenguaje',
-                quimica: '🧪 Química'
-            };
             
-            document.getElementById('channel-title').textContent = channelNames[channel];
+            // Get channel name from default or custom subjects
+            let channelName = '';
+            let channelIcon = '';
+            
+            if (defaultSubjects[channel]) {
+                channelName = defaultSubjects[channel].name;
+                channelIcon = defaultSubjects[channel].emoji;
+            } else if (customSubjects[channel]) {
+                channelName = customSubjects[channel].name;
+                channelIcon = customSubjects[channel].emoji;
+            } else {
+                channelName = 'Canal Desconocido';
+                channelIcon = '📚';
+            }
+            
+            document.getElementById('channel-title').textContent = `${channelIcon} ${channelName}`;
             document.getElementById('channel-chat').classList.remove('hidden');
             
             // Load messages
@@ -1177,7 +1398,45 @@
         }
 
         // Task functions
+        function updateSubjectSelectors() {
+            const taskSelect = document.getElementById('task-subject');
+            const noteSelect = document.getElementById('note-subject');
+            
+            // Clear existing options
+            taskSelect.innerHTML = '';
+            noteSelect.innerHTML = '<option value="">Sin materia específica</option>';
+            
+            // Add default subjects
+            Object.keys(defaultSubjects).forEach(key => {
+                const subject = defaultSubjects[key];
+                const taskOption = document.createElement('option');
+                taskOption.value = key;
+                taskOption.textContent = subject.name;
+                taskSelect.appendChild(taskOption);
+                
+                const noteOption = document.createElement('option');
+                noteOption.value = key;
+                noteOption.textContent = `${subject.emoji} ${subject.name}`;
+                noteSelect.appendChild(noteOption);
+            });
+            
+            // Add custom subjects
+            Object.keys(customSubjects).forEach(key => {
+                const subject = customSubjects[key];
+                const taskOption = document.createElement('option');
+                taskOption.value = key;
+                taskOption.textContent = subject.name;
+                taskSelect.appendChild(taskOption);
+                
+                const noteOption = document.createElement('option');
+                noteOption.value = key;
+                noteOption.textContent = `${subject.emoji} ${subject.name}`;
+                noteSelect.appendChild(noteOption);
+            });
+        }
+
         function showNewTaskForm() {
+            updateSubjectSelectors();
             document.getElementById('new-task-form').classList.remove('hidden');
         }
 
@@ -1186,6 +1445,7 @@
             // Clear form
             document.getElementById('task-title').value = '';
             document.getElementById('task-description').value = '';
+            document.getElementById('task-due-date').value = '';
             document.getElementById('task-file').value = '';
         }
 
@@ -1193,6 +1453,7 @@
             const title = document.getElementById('task-title').value.trim();
             const description = document.getElementById('task-description').value.trim();
             const subject = document.getElementById('task-subject').value;
+            const dueDate = document.getElementById('task-due-date').value;
             const fileInput = document.getElementById('task-file');
             
             if (!title) {
@@ -1207,7 +1468,8 @@
                 subject: subject,
                 fileName: fileInput.files[0] ? fileInput.files[0].name : null,
                 completed: false,
-                createdAt: new Date()
+                createdAt: new Date(),
+                dueDate: dueDate ? new Date(dueDate) : null
             };
             
             tasks.unshift(newTask);
@@ -1215,6 +1477,10 @@
             hideNewTaskForm();
             if (isAcademicMode) {
                 updateProgressStats();
+            }
+            // Refresh calendar to show new task due date
+            if (currentSection === 'calendario') {
+                renderCalendar();
             }
         }
 
@@ -1234,17 +1500,13 @@
             }
             
             tasks.forEach(task => {
-                const subjectColors = {
-                    matematicas: 'bg-blue-100 text-blue-800',
-                    lenguaje: 'bg-green-100 text-green-800',
-                    quimica: 'bg-purple-100 text-purple-800'
-                };
+                // Get subject info from default or custom subjects
+                let subjectInfo = defaultSubjects[task.subject] || customSubjects[task.subject];
+                if (!subjectInfo) {
+                    subjectInfo = { name: 'Materia Desconocida', emoji: '📚', bgColor: 'bg-gray-100' };
+                }
                 
-                const subjectNames = {
-                    matematicas: 'Matemáticas',
-                    lenguaje: 'Lenguaje',
-                    quimica: 'Química'
-                };
+                const subjectColorClass = `${subjectInfo.bgColor.replace('bg-', 'bg-').replace('-100', '-100')} ${subjectInfo.bgColor.replace('bg-', 'text-').replace('-100', '-800')}`;
                 
                 const taskDiv = document.createElement('div');
                 taskDiv.className = `task-card bg-white rounded-lg shadow-sm border p-6 ${task.completed ? 'opacity-75' : ''}`;
@@ -1256,8 +1518,8 @@
                                        onchange="toggleTask(${task.id})" 
                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
                                 <h3 class="text-lg font-semibold ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}">${task.title}</h3>
-                                <span class="px-2 py-1 text-xs font-medium rounded-full ${subjectColors[task.subject]}">
-                                    ${subjectNames[task.subject]}
+                                <span class="px-2 py-1 text-xs font-medium rounded-full ${subjectColorClass}">
+                                    ${subjectInfo.emoji} ${subjectInfo.name}
                                 </span>
                             </div>
                             ${task.description ? `<p class="text-gray-600 mb-3">${task.description}</p>` : ''}
@@ -1265,6 +1527,13 @@
                                 <div class="flex items-center text-sm text-gray-500 mb-2">
                                     <span class="mr-2">📎</span>
                                     <span>${task.fileName}</span>
+                                </div>
+                            ` : ''}
+                            ${task.dueDate ? `
+                                <div class="flex items-center text-sm mb-2 ${task.dueDate < new Date() && !task.completed ? 'text-red-600 font-medium' : 'text-orange-600'}">
+                                    <span class="mr-2">⏰</span>
+                                    <span>Entrega: ${task.dueDate.toLocaleDateString('es-ES')}</span>
+                                    ${task.dueDate < new Date() && !task.completed ? '<span class="ml-2 text-red-500">¡Vencida!</span>' : ''}
                                 </div>
                             ` : ''}
                             <div class="text-xs text-gray-400">
@@ -1288,6 +1557,10 @@
                 if (isAcademicMode) {
                     updateProgressStats();
                 }
+                // Refresh calendar to update task appearance
+                if (currentSection === 'calendario') {
+                    renderCalendar();
+                }
             }
         }
 
@@ -1297,6 +1570,10 @@
                 renderTasks();
                 if (isAcademicMode) {
                     updateProgressStats();
+                }
+                // Refresh calendar to remove task due date
+                if (currentSection === 'calendario') {
+                    renderCalendar();
                 }
             }
         }
@@ -1343,13 +1620,22 @@
                     notes[dateKey] = dayNotes;
                 }
                 
+                // Check for tasks due on this date
+                const dueTasks = tasks.filter(task => {
+                    if (!task.dueDate) return false;
+                    const taskDate = new Date(task.dueDate);
+                    return taskDate.toDateString() === cellDate.toDateString();
+                });
+                
                 let dayClasses = 'calendar-day border p-2 cursor-pointer ';
                 
                 if (cellDate.getMonth() !== currentDate.getMonth()) {
                     dayClasses += 'text-gray-400 bg-gray-50 border-gray-200';
-                } else if (dayNotes && dayNotes.length > 0) {
-                    // Get unique subjects from all notes for this day
-                    const subjects = [...new Set(dayNotes.map(note => note.subject).filter(s => s))];
+                } else if ((dayNotes && dayNotes.length > 0) || dueTasks.length > 0) {
+                    // Get unique subjects from all notes and tasks for this day
+                    const noteSubjects = dayNotes ? [...new Set(dayNotes.map(note => note.subject).filter(s => s))] : [];
+                    const taskSubjects = [...new Set(dueTasks.map(task => task.subject).filter(s => s))];
+                    const subjects = [...new Set([...noteSubjects, ...taskSubjects])];
                     
                     if (subjects.length === 1) {
                         // Single subject
@@ -1371,7 +1657,7 @@
                             dayClasses += `border-gray-400`;
                         }
                     } else {
-                        // Notes without subjects
+                        // Notes/tasks without subjects
                         dayClasses += 'bg-gray-100 border-gray-300 hover:bg-gray-150';
                     }
                 } else {
@@ -1382,27 +1668,52 @@
                 dayDiv.className = dayClasses;
                 
                 // Apply gradient background for multiple subjects
+                const allSubjects = [];
                 if (dayNotes && dayNotes.length > 0) {
-                    const subjects = [...new Set(dayNotes.map(note => note.subject).filter(s => s))];
-                    if (subjects.length > 1) {
-                        const gradientColors = subjects.map(subject => {
-                            switch(subject) {
-                                case 'matematicas': return '#dbeafe';
-                                case 'lenguaje': return '#fee2e2';
-                                case 'quimica': return '#fef3c7';
-                                default: return '#f3f4f6';
-                            }
-                        });
-                        
-                        if (gradientColors.length === 2) {
-                            dayDiv.style.background = `linear-gradient(45deg, ${gradientColors[0]} 50%, ${gradientColors[1]} 50%)`;
-                        } else if (gradientColors.length === 3) {
-                            dayDiv.style.background = `linear-gradient(120deg, ${gradientColors[0]} 33%, ${gradientColors[1]} 33%, ${gradientColors[1]} 66%, ${gradientColors[2]} 66%)`;
+                    allSubjects.push(...dayNotes.map(note => note.subject).filter(s => s));
+                }
+                if (dueTasks.length > 0) {
+                    allSubjects.push(...dueTasks.map(task => task.subject).filter(s => s));
+                }
+                const uniqueSubjects = [...new Set(allSubjects)];
+                
+                if (uniqueSubjects.length > 1) {
+                    const gradientColors = uniqueSubjects.map(subject => {
+                        switch(subject) {
+                            case 'matematicas': return '#dbeafe';
+                            case 'lenguaje': return '#fee2e2';
+                            case 'quimica': return '#fef3c7';
+                            default: return '#f3f4f6';
                         }
+                    });
+                    
+                    if (gradientColors.length === 2) {
+                        dayDiv.style.background = `linear-gradient(45deg, ${gradientColors[0]} 50%, ${gradientColors[1]} 50%)`;
+                    } else if (gradientColors.length === 3) {
+                        dayDiv.style.background = `linear-gradient(120deg, ${gradientColors[0]} 33%, ${gradientColors[1]} 33%, ${gradientColors[1]} 66%, ${gradientColors[2]} 66%)`;
                     }
                 }
                 
-                let noteDisplay = '';
+                let displayContent = '';
+                
+                // Show tasks first (with exclamation mark)
+                if (dueTasks.length > 0) {
+                    const firstTask = dueTasks[0];
+                    const isOverdue = firstTask.dueDate < new Date() && !firstTask.completed;
+                    const taskIcon = isOverdue ? '❗' : '❗';
+                    
+                    const displayText = dueTasks.length > 1 ? 
+                        `${firstTask.title.substring(0, 8)}... (+${dueTasks.length - 1})` :
+                        `${firstTask.title.substring(0, 12)}${firstTask.title.length > 12 ? '...' : ''}`;
+                    
+                    displayContent += `
+                        <div class="text-xs mt-1 truncate font-bold ${isOverdue ? 'text-red-600' : 'text-orange-600'}">
+                            ${taskIcon} ${displayText}
+                        </div>
+                    `;
+                }
+                
+                // Show notes
                 if (dayNotes && dayNotes.length > 0) {
                     const firstNote = dayNotes[0];
                     const timeDisplay = firstNote.time ? ` - ${firstNote.time}` : '';
@@ -1411,10 +1722,10 @@
                                        firstNote.subject === 'quimica' ? '🧪' : '📝';
                     
                     const displayText = dayNotes.length > 1 ? 
-                        `${firstNote.text.substring(0, 10)}... (+${dayNotes.length - 1})` :
-                        `${firstNote.text.substring(0, 15)}${firstNote.text.length > 15 ? '...' : ''}`;
+                        `${firstNote.text.substring(0, 8)}... (+${dayNotes.length - 1})` :
+                        `${firstNote.text.substring(0, 10)}${firstNote.text.length > 10 ? '...' : ''}`;
                     
-                    noteDisplay = `
+                    displayContent += `
                         <div class="text-xs mt-1 truncate font-medium">
                             ${subjectIcon} ${displayText}
                         </div>
@@ -1424,8 +1735,8 @@
                 
                 dayDiv.innerHTML = `
                     <div class="text-sm font-medium">${cellDate.getDate()}</div>
-                    ${dayNotes && dayNotes.length > 0 ? '<div class="note-indicator"></div>' : ''}
-                    ${noteDisplay}
+                    ${(dayNotes && dayNotes.length > 0) || dueTasks.length > 0 ? '<div class="note-indicator"></div>' : ''}
+                    ${displayContent}
                 `;
                 
                 dayDiv.onclick = () => openNoteModal(cellDate);
@@ -1471,6 +1782,9 @@
                     day: 'numeric' 
                 });
             
+            // Update subject selector
+            updateSubjectSelectors();
+            
             // Clear form for new note
             document.getElementById('note-text').value = '';
             document.getElementById('note-time').value = '';
@@ -1492,13 +1806,15 @@
             }
             
             dayNotes.forEach((note, index) => {
-                const subjectIcon = note.subject === 'matematicas' ? '🔢' : 
-                                   note.subject === 'lenguaje' ? '📖' : 
-                                   note.subject === 'quimica' ? '🧪' : '📝';
+                // Get subject info from default or custom subjects
+                let subjectInfo = defaultSubjects[note.subject] || customSubjects[note.subject];
+                let subjectIcon = '📝';
+                let subjectName = 'Sin materia';
                 
-                const subjectName = note.subject === 'matematicas' ? 'Matemáticas' : 
-                                   note.subject === 'lenguaje' ? 'Lenguaje' : 
-                                   note.subject === 'quimica' ? 'Química' : 'Sin materia';
+                if (subjectInfo) {
+                    subjectIcon = subjectInfo.emoji;
+                    subjectName = subjectInfo.name;
+                }
                 
                 const noteDiv = document.createElement('div');
                 noteDiv.className = 'bg-gray-50 rounded-lg p-3 mb-3 border';
@@ -1605,6 +1921,7 @@
         renderCalendar();
         updateProfileDisplay();
         updateHeaderInfo();
+        updateSubjectSelectors();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9800fef4d6d0e7ac',t:'MTc1ODAzMjMzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98012dc3e5cbe9b6',t:'MTc1ODAzNDI1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
