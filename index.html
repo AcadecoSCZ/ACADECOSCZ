@@ -66,8 +66,23 @@
                 <button onclick="showSection('inicio')" class="nav-btn py-4 px-1 border-b-2 border-blue-500 text-blue-600 font-medium text-sm">
                     🏠 Inicio
                 </button>
-                <button onclick="showSection('nosotros')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
-                    ℹ️ Nosotros
+               function goToNosotros(event) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+    // Show nosotros section
+    document.getElementById('nosotros-section').classList.remove('hidden');
+    // Update navigation
+    document.querySelectorAll('#main-nav .nav-btn').forEach(btn => {
+        btn.classList.remove('border-blue-500', 'text-blue-600');
+        btn.classList.add('border-transparent', 'text-gray-500');
+    });
+    // Highlight nosotros button
+    if (event && event.target) {
+        event.target.classList.remove('border-transparent', 'text-gray-500');
+        event.target.classList.add('border-blue-500', 'text-blue-600');
+    }
+    currentSection = 'nosotros';
+}
                 </button>
             </div>
         </div>
@@ -1418,7 +1433,23 @@
         }
 
         function goToNosotros() {
-            showSection('nosotros');
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            
+            // Show nosotros section
+            document.getElementById('nosotros-section').classList.remove('hidden');
+            
+            // Update navigation
+            document.querySelectorAll('#main-nav .nav-btn').forEach(btn => {
+                btn.classList.remove('border-blue-500', 'text-blue-600');
+                btn.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            // Highlight nosotros button
+            event.target.classList.remove('border-transparent', 'text-gray-500');
+            event.target.classList.add('border-blue-500', 'text-blue-600');
+            
+            currentSection = 'nosotros';
         }
 
         // Profile functions
@@ -2245,4 +2276,4 @@
                                               .replace('bg-cyan-100', 'bg-cyan-50')
                                               .replace('bg-gray-100', 'bg-gray-50');
             });
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef5195c6661161',t:'MTc2MDUzMTMzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef60d4079bf1a7',t:'MTc2MDUzMTk1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
