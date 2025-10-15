@@ -634,6 +634,29 @@
                     </div>
                 </div>
 
+                <!-- Custom Timer Form -->
+                <div id="custom-timer-form" class="hidden bg-white rounded-xl shadow-sm border p-6 mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Crear Tiempo Personalizado</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nombre del tiempo</label>
+                            <input type="text" id="custom-timer-name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Ej: Lectura profunda">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Emoji</label>
+                            <input type="text" id="custom-timer-emoji" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="📖" maxlength="2">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Duración (minutos)</label>
+                            <input type="number" id="custom-timer-minutes" min="1" max="120" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="30">
+                        </div>
+                        <div class="flex space-x-3">
+                            <button onclick="createCustomTimer()" class="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">Crear</button>
+                            <button onclick="hideCustomTimerForm()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Focus Settings -->
                 <div class="space-y-6">
                     <!-- Ambient Sounds -->
@@ -697,8 +720,16 @@
                 <h2 class="text-2xl font-bold text-gray-900 mb-2">Sistema de Logros</h2>
                 <p class="text-gray-600 mb-6">Celebra tus éxitos académicos y mantén la motivación alta</p>
                 
+                <!-- Toggle Introduction Button -->
+                <div class="mb-6">
+                    <button onclick="toggleAchievementIntro()" id="intro-toggle-btn" class="flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors">
+                        <span id="intro-toggle-icon">📖</span>
+                        <span class="ml-2" id="intro-toggle-text">Ver introducción al sistema de logros</span>
+                    </button>
+                </div>
+                
                 <!-- Complete Introduction to Achievement System -->
-                <div class="space-y-6">
+                <div id="achievement-intro" class="hidden space-y-6">
                     <!-- What are achievements -->
                     <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
                         <div class="flex items-start">
@@ -2206,22 +2237,100 @@
             updateFocusGoalProgress();
         }
 
-        function setTimerMode(mode) {
+        function setTimerMode(timerId) {
             pauseTimer();
-            currentTimerMode = mode;
-            timerSeconds = mode === 'work' ? 1500 : 300;
+            currentTimerId = timerId;
+            const timer = customTimers.find(t => t.id === timerId);
+            if (timer) {
+                timerSeconds = timer.minutes * 60;
+                currentTimerMode = timer.id === 'work' ? 'work' : 'break'; // For compatibility
+            }
             updateTimerDisplay();
+            updateTimerModeButtons();
+        }
+
+        function updateTimerModeButtons() {
+            const container = document.getElementById('timer-modes');
+            container.innerHTML = '';
             
-            // Update button styles
-            const workBtn = document.getElementById('work-mode-btn');
-            const breakBtn = document.getElementById('break-mode-btn');
+            customTimers.forEach(timer => {
+                const button = document.createElement('button');
+                button.onclick = () => setTimerMode(timer.id);
+                
+                const isActive = timer.id === currentTimerId;
+                button.className = `px-4 py-2 rounded-lg font-medium transition-colors ${
+                    isActive ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`;
+                
+                button.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span>${timer.emoji}</span>
+                        <span>${timer.name} (${timer.minutes}min)</span>
+                        ${!timer.isDefault ? '<button onclick="deleteCustomTimer(\'' + timer.id + '\'); event.stopPropagation();" class="ml-2 text-red-500 hover:text-red-700">×</button>' : ''}
+                    </div>
+                `;
+                
+                container.appendChild(button);
+            });
+        }
+
+        function showCustomTimerForm() {
+            document.getElementById('custom-timer-form').classList.remove('hidden');
+        }
+
+        function hideCustomTimerForm() {
+            document.getElementById('custom-timer-form').classList.add('hidden');
+            // Clear form
+            document.getElementById('custom-timer-name').value = '';
+            document.getElementById('custom-timer-emoji').value = '';
+            document.getElementById('custom-timer-minutes').value = '';
+        }
+
+        function createCustomTimer() {
+            const name = document.getElementById('custom-timer-name').value.trim();
+            const emoji = document.getElementById('custom-timer-emoji').value.trim();
+            const minutes = parseInt(document.getElementById('custom-timer-minutes').value);
             
-            if (mode === 'work') {
-                workBtn.className = 'px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium';
-                breakBtn.className = 'px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium';
-            } else {
-                breakBtn.className = 'px-4 py-2 bg-green-100 text-green-800 rounded-lg font-medium';
-                workBtn.className = 'px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium';
+            if (!name) {
+                alert('Por favor ingresa un nombre para el tiempo');
+                return;
+            }
+            
+            if (!emoji) {
+                alert('Por favor ingresa un emoji');
+                return;
+            }
+            
+            if (!minutes || minutes < 1 || minutes > 120) {
+                alert('Por favor ingresa una duración válida (1-120 minutos)');
+                return;
+            }
+            
+            const newTimer = {
+                id: 'custom_' + Date.now(),
+                name: name,
+                emoji: emoji,
+                minutes: minutes,
+                isDefault: false
+            };
+            
+            customTimers.push(newTimer);
+            updateTimerModeButtons();
+            hideCustomTimerForm();
+            showNotification(`¡Tiempo personalizado "${name}" creado!`, 'success');
+        }
+
+        function deleteCustomTimer(timerId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este tiempo personalizado?')) {
+                customTimers = customTimers.filter(t => t.id !== timerId);
+                
+                // If the deleted timer was active, switch to work mode
+                if (currentTimerId === timerId) {
+                    setTimerMode('work');
+                }
+                
+                updateTimerModeButtons();
+                showNotification('Tiempo personalizado eliminado', 'info');
             }
         }
 
@@ -2497,12 +2606,30 @@
             renderCalendar();
         }
 
+        // Achievement intro toggle function
+        function toggleAchievementIntro() {
+            const intro = document.getElementById('achievement-intro');
+            const toggleIcon = document.getElementById('intro-toggle-icon');
+            const toggleText = document.getElementById('intro-toggle-text');
+            
+            if (intro.classList.contains('hidden')) {
+                intro.classList.remove('hidden');
+                toggleIcon.textContent = '📚';
+                toggleText.textContent = 'Ocultar introducción';
+            } else {
+                intro.classList.add('hidden');
+                toggleIcon.textContent = '📖';
+                toggleText.textContent = 'Ver introducción al sistema de logros';
+            }
+        }
+
         // Initialize the application
         function initializeApp() {
             // Set default timer display
             updateTimerDisplay();
             updateStudyTimeDisplay();
             updateFocusGoalProgress();
+            updateTimerModeButtons();
             
             // Generate initial AI tip
             generateNewTip();
@@ -2528,6 +2655,6 @@
             showSection('inicio');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef811fb359f1a7',t:'MTc2MDUzMzI3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef8c5f37be3472',t:'MTc2MDUzMzczOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
             });
