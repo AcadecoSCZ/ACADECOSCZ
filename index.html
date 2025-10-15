@@ -66,23 +66,8 @@
                 <button onclick="showSection('inicio')" class="nav-btn py-4 px-1 border-b-2 border-blue-500 text-blue-600 font-medium text-sm">
                     🏠 Inicio
                 </button>
-               function goToNosotros(event) {
-    // Hide all sections
-    document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
-    // Show nosotros section
-    document.getElementById('nosotros-section').classList.remove('hidden');
-    // Update navigation
-    document.querySelectorAll('#main-nav .nav-btn').forEach(btn => {
-        btn.classList.remove('border-blue-500', 'text-blue-600');
-        btn.classList.add('border-transparent', 'text-gray-500');
-    });
-    // Highlight nosotros button
-    if (event && event.target) {
-        event.target.classList.remove('border-transparent', 'text-gray-500');
-        event.target.classList.add('border-blue-500', 'text-blue-600');
-    }
-    currentSection = 'nosotros';
-}
+                <button onclick="goToNosotros()" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                    ℹ️ Nosotros
                 </button>
             </div>
         </div>
@@ -133,9 +118,24 @@
             <div class="hero-gradient rounded-2xl text-white p-12 mb-12 text-center">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">Bienvenido a AcadecoSCZ</h1>
                 <p class="text-xl md:text-2xl mb-8 opacity-90">Tu plataforma integral para el éxito académico</p>
-                <div class="flex justify-center">
-                    <button onclick="showAuthModal()" class="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                        Comenzar Ahora
+                <div class="flex justify-center space-x-4">
+                    <button type="button" onclick="showAuthModal()" class="group relative px-10 py-4 bg-white text-purple-600 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <span class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span class="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center">
+                            🚀 Comenzar Ahora
+                            <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <button type="button" onclick="enterAcademicMode()" class="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span class="relative z-10 flex items-center">
+                            📚 Acceso Directo
+                            <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -1407,14 +1407,16 @@
             // Successful login
             currentUser = email;
             closeAuthModal();
-            enterAcademicMode();
-        }
-
-        function enterAcademicMode() {
+            // Enter academic mode after successful login
             isAcademicMode = true;
             document.getElementById('main-nav').classList.add('hidden');
             document.getElementById('academic-nav').classList.remove('hidden');
             showSection('progreso');
+        }
+
+        function enterAcademicMode() {
+            showAuthModal();
+            switchAuthTab('login');
         }
 
         function goBackToMain() {
@@ -2276,4 +2278,256 @@
                                               .replace('bg-cyan-100', 'bg-cyan-50')
                                               .replace('bg-gray-100', 'bg-gray-50');
             });
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef60d4079bf1a7',t:'MTc2MDUzMTk1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+            
+            // Highlight selected sound
+            const soundMap = {
+                rain: 'bg-blue-100',
+                forest: 'bg-green-100', 
+                ocean: 'bg-cyan-100',
+                silence: 'bg-gray-100'
+            };
+            
+            if (soundMap[sound]) {
+                event.target.className = event.target.className.replace(/bg-\w+-50/, soundMap[sound]);
+            }
+            
+            showNotification(`Sonido ambiental: ${sound === 'silence' ? 'Silencio' : sound}`, 'info');
+        }
+
+        // Achievement system functions
+        function checkAchievements() {
+            let newAchievements = [];
+            
+            // Check academic achievements
+            const completedTasks = tasks.filter(t => t.completed).length;
+            const examTasks = tasks.filter(t => t.type === 'examen').length;
+            
+            if (completedTasks >= 1 && !achievements.academic[0].unlocked) {
+                achievements.academic[0].unlocked = true;
+                newAchievements.push(achievements.academic[0]);
+            }
+            
+            if (completedTasks >= 10 && !achievements.academic[1].unlocked) {
+                achievements.academic[1].unlocked = true;
+                newAchievements.push(achievements.academic[1]);
+            }
+            
+            if (examTasks >= 5 && !achievements.academic[3].unlocked) {
+                achievements.academic[3].unlocked = true;
+                newAchievements.push(achievements.academic[3]);
+            }
+            
+            // Check productivity achievements
+            if (completedPomodoros >= 1 && !achievements.productivity[0].unlocked) {
+                achievements.productivity[0].unlocked = true;
+                newAchievements.push(achievements.productivity[0]);
+            }
+            
+            if (completedPomodoros >= 20 && !achievements.productivity[1].unlocked) {
+                achievements.productivity[1].unlocked = true;
+                newAchievements.push(achievements.productivity[1]);
+            }
+            
+            // Show notifications for new achievements
+            newAchievements.forEach(achievement => {
+                showNotification(`¡Logro desbloqueado! ${achievement.name}`, 'success');
+            });
+            
+            updateAchievementsDisplay();
+        }
+
+        function updateAchievementsDisplay() {
+            const academicContainer = document.getElementById('academic-achievements');
+            const productivityContainer = document.getElementById('productivity-achievements');
+            
+            if (academicContainer) {
+                academicContainer.innerHTML = '';
+                achievements.academic.forEach(achievement => {
+                    const achievementDiv = createAchievementElement(achievement);
+                    academicContainer.appendChild(achievementDiv);
+                });
+            }
+            
+            if (productivityContainer) {
+                productivityContainer.innerHTML = '';
+                achievements.productivity.forEach(achievement => {
+                    const achievementDiv = createAchievementElement(achievement);
+                    productivityContainer.appendChild(achievementDiv);
+                });
+            }
+            
+            // Update totals
+            const totalUnlocked = [...achievements.academic, ...achievements.productivity]
+                .filter(a => a.unlocked).length;
+            const totalPoints = [...achievements.academic, ...achievements.productivity]
+                .filter(a => a.unlocked)
+                .reduce((sum, a) => sum + a.points, 0);
+            
+            if (document.getElementById('total-achievements')) {
+                document.getElementById('total-achievements').textContent = totalUnlocked;
+            }
+            if (document.getElementById('total-points')) {
+                document.getElementById('total-points').textContent = totalPoints;
+            }
+        }
+
+        function createAchievementElement(achievement) {
+            const div = document.createElement('div');
+            div.className = `flex items-center p-4 rounded-lg border ${
+                achievement.unlocked ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'
+            }`;
+            
+            div.innerHTML = `
+                <div class="text-3xl mr-4 ${achievement.unlocked ? '' : 'grayscale opacity-50'}">${achievement.icon}</div>
+                <div class="flex-1">
+                    <h4 class="font-semibold ${achievement.unlocked ? 'text-green-900' : 'text-gray-500'}">${achievement.name}</h4>
+                    <p class="text-sm ${achievement.unlocked ? 'text-green-700' : 'text-gray-400'}">${achievement.desc}</p>
+                    <div class="text-xs font-medium mt-1 ${achievement.unlocked ? 'text-green-600' : 'text-gray-400'}">
+                        +${achievement.points} puntos
+                    </div>
+                </div>
+                ${achievement.unlocked ? '<div class="text-green-500 text-xl">✓</div>' : '<div class="text-gray-300 text-xl">🔒</div>'}
+            `;
+            
+            return div;
+        }
+
+        // Tips functions
+        function generateNewTip() {
+            const allTips = Object.values(tipsDatabase).flat();
+            const randomTip = allTips[Math.floor(Math.random() * allTips.length)];
+            document.getElementById('ai-tip').textContent = randomTip;
+        }
+
+        function showTipsCategory(category) {
+            const container = document.getElementById('tips-content');
+            const categoryTips = tipsDatabase[category] || [];
+            
+            const categoryNames = {
+                study: 'Hábitos de Estudio',
+                time: 'Gestión del Tiempo',
+                focus: 'Concentración',
+                phone: 'Uso del Celular',
+                wellness: 'Bienestar',
+                motivation: 'Motivación'
+            };
+            
+            const categoryIcons = {
+                study: '📚',
+                time: '⏰',
+                focus: '🎯',
+                phone: '📱',
+                wellness: '🧘',
+                motivation: '💪'
+            };
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center">
+                        <span class="text-3xl mr-3">${categoryIcons[category]}</span>
+                        ${categoryNames[category]}
+                    </h3>
+                    <p class="text-gray-600">Consejos prácticos para mejorar en esta área</p>
+                </div>
+                <div class="space-y-4">
+                    ${categoryTips.map((tip, index) => `
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-100">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-white font-bold">
+                                    ${index + 1}
+                                </div>
+                                <p class="text-gray-800 leading-relaxed">${tip}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            if (notificationsSilenced) return;
+            
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full`;
+            
+            const colors = {
+                success: 'bg-green-500 text-white',
+                error: 'bg-red-500 text-white',
+                info: 'bg-blue-500 text-white',
+                warning: 'bg-yellow-500 text-black'
+            };
+            
+            notification.className += ` ${colors[type] || colors.info}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        function showReminderNotification(task) {
+            const reminderDays = parseInt(task.reminder);
+            if (reminderDays && task.dueDate) {
+                const reminderDate = new Date(task.dueDate);
+                reminderDate.setDate(reminderDate.getDate() - reminderDays);
+                
+                if (reminderDate <= new Date()) {
+                    showNotification(`Recordatorio: ${task.title} vence en ${reminderDays} día(s)`, 'warning');
+                }
+            }
+        }
+
+        function clearCalendarFilters() {
+            document.getElementById('calendar-filter').value = '';
+            document.getElementById('calendar-type-filter').value = 'all';
+            renderCalendar();
+        }
+
+        // Initialize the application
+        function initializeApp() {
+            // Set default timer display
+            updateTimerDisplay();
+            updateStudyTimeDisplay();
+            updateFocusGoalProgress();
+            
+            // Generate initial AI tip
+            generateNewTip();
+            
+            // Update achievements display
+            updateAchievementsDisplay();
+            
+            // Update profile display
+            updateProfileDisplay();
+            updateHeaderInfo();
+            
+            // Set minimum date for task due dates to today
+            const today = new Date().toISOString().split('T')[0];
+            const dueDateInput = document.getElementById('task-due-date');
+            if (dueDateInput) {
+                dueDateInput.min = today;
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            showSection('inicio');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef7db40615f1a7',t:'MTc2MDUzMzEzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+            });
