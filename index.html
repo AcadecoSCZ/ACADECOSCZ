@@ -6,6 +6,9 @@
     <title>AcadecoSCZ - Plataforma Estudiantil</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            box-sizing: border-box;
+        }
         .calendar-day {
             min-height: 80px;
             position: relative;
@@ -51,28 +54,6 @@
                 <div class="flex items-center space-x-4">
                     <span class="text-sm text-gray-600" id="header-student-name">Estudiante</span>
                     <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium" id="header-avatar">E</div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
                 </div>
             </div>
         </div>
@@ -125,28 +106,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
-                </div>
-            </div>
         </div>
     </nav>
 
@@ -160,8 +119,8 @@
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">Bienvenido a AcadecoSCZ</h1>
                 <p class="text-xl md:text-2xl mb-8 opacity-90">Tu plataforma integral para el éxito académico</p>
                 <div class="flex justify-center">
-                    <button onclick="showSection('nosotros')" class="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                        Conoce Más
+                    <button onclick="showAuthModal()" class="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                        Comenzar Ahora
                     </button>
                 </div>
             </div>
@@ -192,7 +151,6 @@
                     <p class="text-gray-600">Planifica tus actividades y mantén anotaciones importantes en cada día</p>
                 </div>
             </div>
-
 
         </div>
 
@@ -277,28 +235,6 @@
                             Acceder a la Plataforma
                         </button>
                     </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
                 </div>
             </div>
         </div>
@@ -399,27 +335,7 @@
                 </div>
             </div>
 
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
-                </div>
-            </div>
+
         </div>
 
         <!-- Perfil Section -->
@@ -504,31 +420,7 @@
                     </form>
                 </div>
             </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
-                </div>
-            </div>
         </div>
-
-
 
         <!-- Tareas Section -->
         <div id="tareas-section" class="section hidden">
@@ -668,28 +560,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
-                </div>
-            </div>
         </div>
 
         <!-- Focus Mode Section -->
@@ -802,30 +672,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
                 </div>
             </div>
         </div>
@@ -834,22 +680,151 @@
         <div id="logros-section" class="section hidden">
             <div class="mb-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-2">Sistema de Logros</h2>
-                <p class="text-gray-600 mb-4">Celebra tus éxitos académicos y mantén la motivación</p>
+                <p class="text-gray-600 mb-6">Celebra tus éxitos académicos y mantén la motivación alta</p>
                 
-                <!-- Introduction to Points System -->
-                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-                    <div class="flex items-start">
-                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                            <span class="text-2xl">💎</span>
+                <!-- Complete Introduction to Achievement System -->
+                <div class="space-y-6">
+                    <!-- What are achievements -->
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">🏆</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-purple-900 mb-2">¿Qué son los logros?</h3>
+                                <p class="text-purple-800 leading-relaxed mb-3">
+                                    Los logros son <strong>reconocimientos especiales</strong> que obtienes al completar actividades específicas en tu vida académica. 
+                                    Cada logro representa un hito importante en tu desarrollo como estudiante y te motiva a seguir mejorando.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                    <div class="bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="font-semibold text-purple-900 mb-1">📚 Logros Académicos</div>
+                                        <div class="text-sm text-purple-700">Por completar tareas, exámenes y proyectos</div>
+                                    </div>
+                                    <div class="bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="font-semibold text-purple-900 mb-1">⚡ Logros de Productividad</div>
+                                        <div class="text-sm text-purple-700">Por usar técnicas de estudio y concentración</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-blue-900 mb-2">¿Para qué sirven los puntos?</h3>
-                            <p class="text-blue-800 leading-relaxed">
-                                Los puntos que ganas al completar tareas y logros son tu medida de progreso académico. 
-                                Cada actividad completada te otorga puntos que reflejan tu dedicación y constancia. 
-                                <strong>Acumula puntos para desbloquear nuevos logros</strong> y demostrar tu crecimiento como estudiante. 
-                                ¡Entre más puntos tengas, más cerca estarás de convertirte en un estudiante ejemplar!
-                            </p>
+                    </div>
+
+                    <!-- How to earn points -->
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">💎</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-blue-900 mb-2">¿Cómo ganar puntos?</h3>
+                                <p class="text-blue-800 leading-relaxed mb-4">
+                                    Los puntos se ganan automáticamente cuando realizas actividades en AcadecoSCZ. 
+                                    <strong>Cada acción cuenta</strong> y te acerca más a desbloquear nuevos logros.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">✅</span>
+                                        <div>
+                                            <div class="font-medium text-blue-900">Completar tareas</div>
+                                            <div class="text-sm text-blue-700">+5-15 puntos cada una</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">⏰</span>
+                                        <div>
+                                            <div class="font-medium text-blue-900">Sesiones de estudio</div>
+                                            <div class="text-sm text-blue-700">+10-25 puntos por sesión</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">🏆</span>
+                                        <div>
+                                            <div class="font-medium text-blue-900">Desbloquear logros</div>
+                                            <div class="text-sm text-blue-700">+10-100 puntos extra</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">📅</span>
+                                        <div>
+                                            <div class="font-medium text-blue-900">Usar el calendario</div>
+                                            <div class="text-sm text-blue-700">+5 puntos por recordatorio</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How achievements work -->
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-green-900 mb-2">¿Cómo funcionan los logros?</h3>
+                                <p class="text-green-800 leading-relaxed mb-4">
+                                    Los logros se desbloquean automáticamente cuando cumples ciertos requisitos. 
+                                    <strong>No necesitas hacer nada especial</strong>, solo usar AcadecoSCZ normalmente.
+                                </p>
+                                <div class="space-y-3">
+                                    <div class="flex items-start bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-xl mr-3 mt-1">🔒</span>
+                                        <div>
+                                            <div class="font-medium text-green-900">Logros Bloqueados</div>
+                                            <div class="text-sm text-green-700">Aparecen en gris y muestran qué necesitas hacer para desbloquearlos</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-xl mr-3 mt-1">🌟</span>
+                                        <div>
+                                            <div class="font-medium text-green-900">Logros Desbloqueados</div>
+                                            <div class="text-sm text-green-700">Aparecen a todo color y suman puntos a tu total</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-xl mr-3 mt-1">🎉</span>
+                                        <div>
+                                            <div class="font-medium text-green-900">Notificación de Logro</div>
+                                            <div class="text-sm text-green-700">Recibes una notificación cuando desbloqueas un nuevo logro</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motivation section -->
+                    <div class="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">💪</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-orange-900 mb-2">¿Por qué son importantes?</h3>
+                                <p class="text-orange-800 leading-relaxed mb-3">
+                                    Los logros y puntos no son solo números. Son una forma de <strong>reconocer tu esfuerzo</strong> 
+                                    y mantenerte motivado en tu camino académico.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="text-2xl mb-2">📈</div>
+                                        <div class="font-medium text-orange-900">Progreso Visible</div>
+                                        <div class="text-xs text-orange-700">Ve tu crecimiento día a día</div>
+                                    </div>
+                                    <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="text-2xl mb-2">🎯</div>
+                                        <div class="font-medium text-orange-900">Metas Claras</div>
+                                        <div class="text-xs text-orange-700">Objetivos específicos que alcanzar</div>
+                                    </div>
+                                    <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="text-2xl mb-2">🌟</div>
+                                        <div class="font-medium text-orange-900">Motivación Extra</div>
+                                        <div class="text-xs text-orange-700">Razones para seguir estudiando</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -918,28 +893,6 @@
                     <div class="w-full bg-gray-200 rounded-full h-3">
                         <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full transition-all duration-500" style="width: 0%" id="weekly-progress-bar"></div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
                 </div>
             </div>
         </div>
@@ -1017,28 +970,6 @@
                     <p class="text-gray-600">Elige una categoría arriba para ver consejos específicos</p>
                 </div>
             </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
-                    </button>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -1101,28 +1032,6 @@
                     </button>
                     <button onclick="handleRegister()" class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
                         Crear Cuenta
-                    </button>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
-                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">🔕</div>
-                        <div class="font-medium">Silenciar notificaciones</div>
-                        <div class="text-sm opacity-75">(Demo)</div>
-                    </button>
-                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📋</div>
-                        <div class="font-medium">Ver tareas pendientes</div>
-                        <div class="text-sm opacity-75">Vista rápida</div>
-                    </button>
-                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
-                        <div class="text-2xl mb-2">📝</div>
-                        <div class="font-medium">Registrar sesión</div>
-                        <div class="text-sm opacity-75">Guardar progreso</div>
                     </button>
                 </div>
             </div>
@@ -1267,8 +1176,6 @@
             ]
         };
 
-
-
         // Default subjects configuration
         const defaultSubjects = {
             matematicas: {
@@ -1293,8 +1200,6 @@
                 isDefault: true
             }
         };
-
-
 
         // Initialize sample tasks
         tasks = [
@@ -1512,6 +1417,10 @@
             }
         }
 
+        function goToNosotros() {
+            showSection('nosotros');
+        }
+
         // Profile functions
         function loadProfile() {
             document.getElementById('student-name').value = studentProfile.name;
@@ -1674,8 +1583,6 @@
                 document.getElementById(`${subjectMap[subject]}-bar`).style.width = `${percentage}%`;
             });
         }
-
-
 
         // Task functions
         function updateSubjectSelectors() {
@@ -1895,6 +1802,10 @@
             const startDate = new Date(firstDay);
             startDate.setDate(startDate.getDate() - firstDay.getDay());
             
+            // Get filter values
+            const subjectFilter = document.getElementById('calendar-filter')?.value || '';
+            const typeFilter = document.getElementById('calendar-type-filter')?.value || 'all';
+            
             // Subject colors for calendar days
             const subjectColors = {
                 matematicas: 'bg-blue-100 border-blue-300 text-blue-800',
@@ -1920,11 +1831,30 @@
                 }
                 
                 // Check for tasks due on this date
-                const dueTasks = tasks.filter(task => {
+                let dueTasks = tasks.filter(task => {
                     if (!task.dueDate) return false;
                     const taskDate = new Date(task.dueDate);
                     return taskDate.toDateString() === cellDate.toDateString();
                 });
+                
+                // Apply filters
+                if (subjectFilter) {
+                    dueTasks = dueTasks.filter(task => task.subject === subjectFilter);
+                    if (dayNotes) {
+                        dayNotes = dayNotes.filter(note => note.subject === subjectFilter);
+                    }
+                }
+                
+                if (typeFilter !== 'all') {
+                    if (typeFilter === 'tasks') {
+                        dayNotes = [];
+                    } else if (typeFilter === 'notes') {
+                        dueTasks = [];
+                    } else if (typeFilter === 'exams') {
+                        dueTasks = dueTasks.filter(task => task.type === 'examen');
+                        dayNotes = [];
+                    }
+                }
                 
                 let dayClasses = 'calendar-day border p-2 cursor-pointer ';
                 
@@ -2208,8 +2138,6 @@
             }
         }
 
-        // Event listeners
-
         // Focus Mode Functions
         function startTimer() {
             if (!isTimerRunning) {
@@ -2317,492 +2245,4 @@
                                               .replace('bg-cyan-100', 'bg-cyan-50')
                                               .replace('bg-gray-100', 'bg-gray-50');
             });
-            
-            // Highlight selected sound
-            event.target.className = event.target.className.replace('-50', '-100');
-            
-            const soundNames = {
-                rain: 'Lluvia',
-                forest: 'Bosque',
-                ocean: 'Océano',
-                silence: 'Silencio'
-            };
-            
-            showNotification(`Sonido seleccionado: ${soundNames[sound]}`, 'info');
-        }
-
-        function toggleNotifications() {
-            notificationsSilenced = !notificationsSilenced;
-            const btn = document.getElementById('notifications-btn');
-            
-            if (notificationsSilenced) {
-                btn.innerHTML = '🔔 Activar notificaciones (Demo)';
-                btn.className = 'w-full p-3 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-left transition-colors';
-                showNotification('Notificaciones silenciadas (Demo)', 'info');
-            } else {
-                btn.innerHTML = '🔕 Silenciar notificaciones (Demo)';
-                btn.className = 'w-full p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-left transition-colors';
-                showNotification('Notificaciones activadas (Demo)', 'info');
-            }
-        }
-
-        function openTaskQuickView() {
-            const pendingTasks = tasks.filter(t => !t.completed);
-            let message = 'Tareas pendientes:\n\n';
-            
-            if (pendingTasks.length === 0) {
-                message = '¡Excelente! No tienes tareas pendientes.';
-            } else {
-                pendingTasks.slice(0, 5).forEach((task, index) => {
-                    const priority = task.priority === 'alta' ? '🔴' : task.priority === 'media' ? '🟡' : '🟢';
-                    message += `${priority} ${task.title}\n`;
-                });
-                
-                if (pendingTasks.length > 5) {
-                    message += `\n... y ${pendingTasks.length - 5} más`;
-                }
-            }
-            
-            showNotification(message, 'info');
-        }
-
-        function logStudySession() {
-            const subject = document.getElementById('focus-subject').value;
-            const subjectName = subject ? defaultSubjects[subject]?.name || 'General' : 'General';
-            
-            showNotification(`Sesión de estudio registrada: ${subjectName} - ${Math.floor(totalStudyTime / 60)}h ${totalStudyTime % 60}m`, 'success');
-            
-            // Reset session stats
-            completedPomodoros = 0;
-            totalStudyTime = 0;
-            document.getElementById('completed-pomodoros').textContent = '0';
-            document.getElementById('total-study-time').textContent = '0h 0m';
-            updateFocusGoalProgress();
-        }
-
-        // Achievement Functions
-        function checkAchievements() {
-            const completedTasks = tasks.filter(t => t.completed).length;
-            const examTasks = tasks.filter(t => t.type === 'examen').length;
-            
-            // Check academic achievements
-            if (completedTasks >= 1 && !achievements.academic[0].unlocked) {
-                unlockAchievement('academic', 0);
-            }
-            if (completedTasks >= 10 && !achievements.academic[1].unlocked) {
-                unlockAchievement('academic', 1);
-            }
-            if (examTasks >= 5 && !achievements.academic[3].unlocked) {
-                unlockAchievement('academic', 3);
-            }
-            
-            // Check productivity achievements
-            if (completedPomodoros >= 1 && !achievements.productivity[0].unlocked) {
-                unlockAchievement('productivity', 0);
-            }
-            if (completedPomodoros >= 20 && !achievements.productivity[1].unlocked) {
-                unlockAchievement('productivity', 1);
-            }
-            
-            updateAchievementDisplay();
-        }
-
-        function unlockAchievement(category, index) {
-            achievements[category][index].unlocked = true;
-            const achievement = achievements[category][index];
-            
-            showNotification(`🏆 ¡Logro desbloqueado!\n${achievement.name}\n+${achievement.points} puntos`, 'success');
-        }
-
-        function updateAchievementDisplay() {
-            const academicContainer = document.getElementById('academic-achievements');
-            const productivityContainer = document.getElementById('productivity-achievements');
-            
-            academicContainer.innerHTML = '';
-            productivityContainer.innerHTML = '';
-            
-            let totalUnlocked = 0;
-            let totalPoints = 0;
-            
-            // Render academic achievements
-            achievements.academic.forEach(achievement => {
-                if (achievement.unlocked) {
-                    totalUnlocked++;
-                    totalPoints += achievement.points;
-                }
-                
-                const achievementDiv = document.createElement('div');
-                achievementDiv.className = `flex items-center p-4 rounded-lg border ${achievement.unlocked ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`;
-                achievementDiv.innerHTML = `
-                    <div class="text-3xl mr-4 ${achievement.unlocked ? '' : 'grayscale opacity-50'}">${achievement.icon}</div>
-                    <div class="flex-1">
-                        <h4 class="font-semibold ${achievement.unlocked ? 'text-green-800' : 'text-gray-600'}">${achievement.name}</h4>
-                        <p class="text-sm ${achievement.unlocked ? 'text-green-600' : 'text-gray-500'}">${achievement.desc}</p>
-                        <span class="text-xs font-medium ${achievement.unlocked ? 'text-green-700' : 'text-gray-400'}">${achievement.points} puntos</span>
-                    </div>
-                    ${achievement.unlocked ? '<div class="text-green-600 text-xl">✓</div>' : ''}
-                `;
-                academicContainer.appendChild(achievementDiv);
-            });
-            
-            // Render productivity achievements
-            achievements.productivity.forEach(achievement => {
-                if (achievement.unlocked) {
-                    totalUnlocked++;
-                    totalPoints += achievement.points;
-                }
-                
-                const achievementDiv = document.createElement('div');
-                achievementDiv.className = `flex items-center p-4 rounded-lg border ${achievement.unlocked ? 'bg-blue-50 border-blue-200' : 'bg-gray-50 border-gray-200'}`;
-                achievementDiv.innerHTML = `
-                    <div class="text-3xl mr-4 ${achievement.unlocked ? '' : 'grayscale opacity-50'}">${achievement.icon}</div>
-                    <div class="flex-1">
-                        <h4 class="font-semibold ${achievement.unlocked ? 'text-blue-800' : 'text-gray-600'}">${achievement.name}</h4>
-                        <p class="text-sm ${achievement.unlocked ? 'text-blue-600' : 'text-gray-500'}">${achievement.desc}</p>
-                        <span class="text-xs font-medium ${achievement.unlocked ? 'text-blue-700' : 'text-gray-400'}">${achievement.points} puntos</span>
-                    </div>
-                    ${achievement.unlocked ? '<div class="text-blue-600 text-xl">✓</div>' : ''}
-                `;
-                productivityContainer.appendChild(achievementDiv);
-            });
-            
-            // Update totals
-            document.getElementById('total-achievements').textContent = totalUnlocked;
-            document.getElementById('total-points').textContent = totalPoints;
-            
-            // Update weekly challenge (simulate progress)
-            const weeklyProgress = Math.min(completedPomodoros, 5);
-            document.getElementById('weekly-progress').textContent = `${weeklyProgress}/5`;
-            document.getElementById('weekly-progress-bar').style.width = `${(weeklyProgress / 5) * 100}%`;
-        }
-
-        // Tips Functions
-        function generateNewTip() {
-            const allTips = Object.values(tipsDatabase).flat();
-            const randomTip = allTips[Math.floor(Math.random() * allTips.length)];
-            
-            // Personalize based on user activity
-            const completedTasks = tasks.filter(t => t.completed).length;
-            const pendingTasks = tasks.filter(t => !t.completed).length;
-            
-            let personalizedTip = randomTip;
-            
-            if (pendingTasks > 5) {
-                personalizedTip = "Tienes varias tareas pendientes. Considera usar la técnica Pomodoro para abordarlas una por una.";
-            } else if (completedTasks > 10) {
-                personalizedTip = "¡Excelente progreso! Mantén el momentum celebrando tus logros y estableciendo nuevas metas.";
-            } else if (completedPomodoros > 5) {
-                personalizedTip = "Has demostrado gran disciplina con el Focus Mode. Considera aumentar gradualmente tus sesiones de estudio.";
-            }
-            
-            document.getElementById('ai-tip').textContent = personalizedTip;
-        }
-
-        function showTipsCategory(category) {
-            const categoryTips = tipsDatabase[category];
-            const categoryNames = {
-                study: 'Hábitos de Estudio',
-                time: 'Gestión del Tiempo',
-                focus: 'Concentración',
-                phone: 'Uso del Celular',
-                wellness: 'Bienestar',
-                motivation: 'Motivación'
-            };
-            
-            const categoryIcons = {
-                study: '📚',
-                time: '⏰',
-                focus: '🎯',
-                phone: '📱',
-                wellness: '🧘',
-                motivation: '💪'
-            };
-            
-            const content = document.getElementById('tips-content');
-            content.innerHTML = `
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold mb-2 flex items-center">
-                        <span class="text-3xl mr-3">${categoryIcons[category]}</span>
-                        ${categoryNames[category]}
-                    </h3>
-                    <p class="text-gray-600">Consejos prácticos para mejorar en esta área</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    ${categoryTips.map((tip, index) => `
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-100">
-                            <div class="flex items-start">
-                                <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
-                                    ${index + 1}
-                                </div>
-                                <p class="text-gray-800 leading-relaxed">${tip}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-                <div class="mt-8 text-center">
-                    <button onclick="generateNewTip()" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                        🤖 Generar consejo personalizado
-                    </button>
-                </div>
-            `;
-        }
-
-        // Calendar Filter Functions
-        function clearCalendarFilters() {
-            document.getElementById('calendar-filter').value = '';
-            document.getElementById('calendar-type-filter').value = 'all';
-            renderCalendar();
-        }
-
-        // Notification System
-        function showNotification(message, type = 'info') {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full`;
-            
-            const colors = {
-                success: 'bg-green-500 text-white',
-                error: 'bg-red-500 text-white',
-                info: 'bg-blue-500 text-white',
-                warning: 'bg-yellow-500 text-black'
-            };
-            
-            notification.className += ` ${colors[type]}`;
-            notification.innerHTML = `
-                <div class="flex items-start">
-                    <div class="flex-1">
-                        <p class="whitespace-pre-line">${message}</p>
-                    </div>
-                    <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-lg leading-none">×</button>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.classList.remove('translate-x-full');
-            }, 100);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                notification.classList.add('translate-x-full');
-                setTimeout(() => {
-                    if (notification.parentElement) {
-                        notification.remove();
-                    }
-                }, 300);
-            }, 5000);
-        }
-
-        function showReminderNotification(task) {
-            const reminderDays = parseInt(task.reminder);
-            const dueDate = new Date(task.dueDate);
-            const reminderDate = new Date(dueDate.getTime() - (reminderDays * 24 * 60 * 60 * 1000));
-            const now = new Date();
-            
-            if (reminderDate <= now) {
-                showNotification(`📅 Recordatorio: "${task.title}" vence en ${reminderDays} día(s)`, 'warning');
-            }
-        }
-
-        // Enhanced renderCalendar with filters
-        function renderCalendar() {
-            const monthNames = [
-                'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-            ];
-            
-            document.getElementById('calendar-month').textContent = 
-                `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-            
-            const grid = document.getElementById('calendar-grid');
-            grid.innerHTML = '';
-            
-            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-            const startDate = new Date(firstDay);
-            startDate.setDate(startDate.getDate() - firstDay.getDay());
-            
-            // Get filter values
-            const subjectFilter = document.getElementById('calendar-filter')?.value || '';
-            const typeFilter = document.getElementById('calendar-type-filter')?.value || 'all';
-            
-            // Subject colors for calendar days
-            const subjectColors = {
-                matematicas: 'bg-blue-100 border-blue-300 text-blue-800',
-                lenguaje: 'bg-red-100 border-red-300 text-red-800',
-                quimica: 'bg-yellow-100 border-yellow-300 text-yellow-800'
-            };
-            
-            for (let i = 0; i < 42; i++) {
-                const cellDate = new Date(startDate);
-                cellDate.setDate(startDate.getDate() + i);
-                
-                const dateKey = cellDate.toDateString();
-                let dayNotes = notes[dateKey];
-                
-                // Convert old format to new format
-                if (dayNotes && !Array.isArray(dayNotes)) {
-                    if (typeof dayNotes === 'string') {
-                        dayNotes = [{ text: dayNotes, time: '', subject: '', id: Date.now() }];
-                    } else {
-                        dayNotes = [{ ...dayNotes, id: Date.now() }];
-                    }
-                    notes[dateKey] = dayNotes;
-                }
-                
-                // Check for tasks due on this date
-                let dueTasks = tasks.filter(task => {
-                    if (!task.dueDate) return false;
-                    const taskDate = new Date(task.dueDate);
-                    return taskDate.toDateString() === cellDate.toDateString();
-                });
-                
-                // Apply filters
-                if (subjectFilter) {
-                    dueTasks = dueTasks.filter(task => task.subject === subjectFilter);
-                    if (dayNotes) {
-                        dayNotes = dayNotes.filter(note => note.subject === subjectFilter);
-                    }
-                }
-                
-                if (typeFilter !== 'all') {
-                    if (typeFilter === 'tasks') {
-                        dayNotes = [];
-                    } else if (typeFilter === 'notes') {
-                        dueTasks = [];
-                    } else if (typeFilter === 'exams') {
-                        dueTasks = dueTasks.filter(task => task.type === 'examen');
-                        dayNotes = [];
-                    }
-                }
-                
-                let dayClasses = 'calendar-day border p-2 cursor-pointer ';
-                
-                if (cellDate.getMonth() !== currentDate.getMonth()) {
-                    dayClasses += 'text-gray-400 bg-gray-50 border-gray-200';
-                } else if ((dayNotes && dayNotes.length > 0) || dueTasks.length > 0) {
-                    // Get unique subjects from all notes and tasks for this day
-                    const noteSubjects = dayNotes ? [...new Set(dayNotes.map(note => note.subject).filter(s => s))] : [];
-                    const taskSubjects = [...new Set(dueTasks.map(task => task.subject).filter(s => s))];
-                    const subjects = [...new Set([...noteSubjects, ...taskSubjects])];
-                    
-                    if (subjects.length === 1) {
-                        // Single subject
-                        dayClasses += subjectColors[subjects[0]];
-                    } else if (subjects.length > 1) {
-                        // Multiple subjects - create gradient effect
-                        const gradientColors = subjects.map(subject => {
-                            switch(subject) {
-                                case 'matematicas': return '#dbeafe'; // blue-100
-                                case 'lenguaje': return '#fee2e2'; // red-100
-                                case 'quimica': return '#fef3c7'; // yellow-100
-                                default: return '#f3f4f6'; // gray-100
-                            }
-                        });
-                        
-                        if (gradientColors.length === 2) {
-                            dayClasses += `border-gray-400`;
-                        } else {
-                            dayClasses += `border-gray-400`;
-                        }
-                    } else {
-                        // Notes/tasks without subjects
-                        dayClasses += 'bg-gray-100 border-gray-300 hover:bg-gray-150';
-                    }
-                } else {
-                    dayClasses += 'border-gray-200 hover:bg-gray-50';
-                }
-                
-                const dayDiv = document.createElement('div');
-                dayDiv.className = dayClasses;
-                
-                // Apply gradient background for multiple subjects
-                const allSubjects = [];
-                if (dayNotes && dayNotes.length > 0) {
-                    allSubjects.push(...dayNotes.map(note => note.subject).filter(s => s));
-                }
-                if (dueTasks.length > 0) {
-                    allSubjects.push(...dueTasks.map(task => task.subject).filter(s => s));
-                }
-                const uniqueSubjects = [...new Set(allSubjects)];
-                
-                if (uniqueSubjects.length > 1) {
-                    const gradientColors = uniqueSubjects.map(subject => {
-                        switch(subject) {
-                            case 'matematicas': return '#dbeafe';
-                            case 'lenguaje': return '#fee2e2';
-                            case 'quimica': return '#fef3c7';
-                            default: return '#f3f4f6';
-                        }
-                    });
-                    
-                    if (gradientColors.length === 2) {
-                        dayDiv.style.background = `linear-gradient(45deg, ${gradientColors[0]} 50%, ${gradientColors[1]} 50%)`;
-                    } else if (gradientColors.length === 3) {
-                        dayDiv.style.background = `linear-gradient(120deg, ${gradientColors[0]} 33%, ${gradientColors[1]} 33%, ${gradientColors[1]} 66%, ${gradientColors[2]} 66%)`;
-                    }
-                }
-                
-                let displayContent = '';
-                
-                // Show tasks first (with exclamation mark)
-                if (dueTasks.length > 0) {
-                    const firstTask = dueTasks[0];
-                    const isOverdue = firstTask.dueDate < new Date() && !firstTask.completed;
-                    const taskIcon = isOverdue ? '❗' : '❗';
-                    
-                    const displayText = dueTasks.length > 1 ? 
-                        `${firstTask.title.substring(0, 8)}... (+${dueTasks.length - 1})` :
-                        `${firstTask.title.substring(0, 12)}${firstTask.title.length > 12 ? '...' : ''}`;
-                    
-                    displayContent += `
-                        <div class="text-xs mt-1 truncate font-bold ${isOverdue ? 'text-red-600' : 'text-orange-600'}">
-                            ${taskIcon} ${displayText}
-                        </div>
-                    `;
-                }
-                
-                // Show notes
-                if (dayNotes && dayNotes.length > 0) {
-                    const firstNote = dayNotes[0];
-                    const timeDisplay = firstNote.time ? ` - ${firstNote.time}` : '';
-                    const subjectIcon = firstNote.subject === 'matematicas' ? '🔢' : 
-                                       firstNote.subject === 'lenguaje' ? '📖' : 
-                                       firstNote.subject === 'quimica' ? '🧪' : '📝';
-                    
-                    const displayText = dayNotes.length > 1 ? 
-                        `${firstNote.text.substring(0, 8)}... (+${dayNotes.length - 1})` :
-                        `${firstNote.text.substring(0, 10)}${firstNote.text.length > 10 ? '...' : ''}`;
-                    
-                    displayContent += `
-                        <div class="text-xs mt-1 truncate font-medium">
-                            ${subjectIcon} ${displayText}
-                        </div>
-                        ${timeDisplay ? `<div class="text-xs font-bold">${firstNote.time}</div>` : ''}
-                    `;
-                }
-                
-                dayDiv.innerHTML = `
-                    <div class="text-sm font-medium">${cellDate.getDate()}</div>
-                    ${(dayNotes && dayNotes.length > 0) || dueTasks.length > 0 ? '<div class="note-indicator"></div>' : ''}
-                    ${displayContent}
-                `;
-                
-                dayDiv.onclick = () => openNoteModal(cellDate);
-                grid.appendChild(dayDiv);
-            }
-        }
-
-        // Initialize the app
-        renderTasks();
-        renderCalendar();
-        updateProfileDisplay();
-        updateHeaderInfo();
-        updateSubjectSelectors();
-        updateAchievementDisplay();
-        generateNewTip();
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef4395b5b81161',t:'MTc2MDUzMDc1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef5195c6661161',t:'MTc2MDUzMTMzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
