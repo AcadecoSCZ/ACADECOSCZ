@@ -53,6 +53,28 @@
                     <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium" id="header-avatar">E</div>
                 </div>
             </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -78,14 +100,20 @@
                     <button onclick="showSection('progreso')" class="nav-btn py-4 px-1 border-b-2 border-blue-500 text-blue-600 font-medium text-sm">
                         📊 Mi Progreso
                     </button>
-                    <button onclick="showSection('canales')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
-                        💬 Canales
-                    </button>
                     <button onclick="showSection('tareas')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
                         📋 Tareas
                     </button>
                     <button onclick="showSection('calendario')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
                         📅 Calendario
+                    </button>
+                    <button onclick="showSection('focus')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        🎯 Focus Mode
+                    </button>
+                    <button onclick="showSection('logros')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        🏆 Logros
+                    </button>
+                    <button onclick="showSection('consejos')" class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        💡 Consejos
                     </button>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -94,6 +122,28 @@
                     </button>
                     <button onclick="goBackToMain()" class="px-3 py-1 text-sm text-gray-600 hover:text-gray-800">
                         ← Volver al inicio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
                     </button>
                 </div>
             </div>
@@ -120,10 +170,10 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div class="feature-card bg-white rounded-xl shadow-sm border p-8 text-center">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-3xl">💬</span>
+                        <span class="text-3xl">📊</span>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">Canales por Materia</h3>
-                    <p class="text-gray-600">Comunícate con profesores y compañeros organizados por materias específicas</p>
+                    <h3 class="text-xl font-semibold mb-4">Seguimiento de Progreso</h3>
+                    <p class="text-gray-600">Monitorea tu rendimiento académico y estadísticas de estudio por materia</p>
                 </div>
 
                 <div class="feature-card bg-white rounded-xl shadow-sm border p-8 text-center">
@@ -229,6 +279,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Mi Progreso Section -->
@@ -326,6 +398,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Perfil Section -->
@@ -410,106 +504,31 @@
                     </form>
                 </div>
             </div>
-        </div>
 
-        <!-- Canales Section -->
-        <div id="canales-section" class="section hidden">
-            <div class="flex justify-between items-center mb-6">
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Canales por Materia</h2>
-                    <p class="text-gray-600">Selecciona una materia para ver las conversaciones y recursos</p>
-                </div>
-                <button onclick="showNewSubjectForm()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center">
-                    ➕ Nueva Materia
-                </button>
-            </div>
-
-            <!-- New Subject Form -->
-            <div id="new-subject-form" class="hidden mb-6">
-                <div class="bg-white rounded-lg shadow-sm border p-6">
-                    <h3 class="text-lg font-semibold mb-4">Crear Nueva Materia</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Nombre de la materia</label>
-                            <input type="text" id="subject-name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Historia, Física, Inglés...">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Descripción</label>
-                            <input type="text" id="subject-description" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Breve descripción de la materia">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Foto de perfil de la materia</label>
-                            <div class="flex items-center space-x-4">
-                                <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden" id="subject-image-preview">
-                                    <span class="text-2xl" id="subject-emoji-preview">📚</span>
-                                    <img id="subject-image-display" class="w-full h-full object-cover hidden" alt="Foto de materia">
-                                </div>
-                                <div class="flex-1">
-                                    <input type="file" id="subject-image-input" accept="image/*" class="hidden" onchange="handleSubjectImageChange()">
-                                    <button type="button" onclick="document.getElementById('subject-image-input').click()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors mr-2">
-                                        Subir imagen
-                                    </button>
-                                    <button type="button" onclick="showEmojiPicker()" class="px-4 py-2 bg-yellow-200 text-yellow-700 rounded-lg hover:bg-yellow-300 transition-colors">
-                                        Elegir emoji
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- Emoji Picker -->
-                            <div id="emoji-picker" class="hidden mt-3 p-3 bg-gray-50 rounded-lg">
-                                <p class="text-sm font-medium text-gray-700 mb-2">Selecciona un emoji:</p>
-                                <div class="grid grid-cols-8 gap-2">
-                                    <button type="button" onclick="selectEmoji('📚')" class="text-2xl hover:bg-gray-200 rounded p-1">📚</button>
-                                    <button type="button" onclick="selectEmoji('🔬')" class="text-2xl hover:bg-gray-200 rounded p-1">🔬</button>
-                                    <button type="button" onclick="selectEmoji('🎨')" class="text-2xl hover:bg-gray-200 rounded p-1">🎨</button>
-                                    <button type="button" onclick="selectEmoji('🎵')" class="text-2xl hover:bg-gray-200 rounded p-1">🎵</button>
-                                    <button type="button" onclick="selectEmoji('⚽')" class="text-2xl hover:bg-gray-200 rounded p-1">⚽</button>
-                                    <button type="button" onclick="selectEmoji('🌍')" class="text-2xl hover:bg-gray-200 rounded p-1">🌍</button>
-                                    <button type="button" onclick="selectEmoji('💻')" class="text-2xl hover:bg-gray-200 rounded p-1">💻</button>
-                                    <button type="button" onclick="selectEmoji('🏛️')" class="text-2xl hover:bg-gray-200 rounded p-1">🏛️</button>
-                                    <button type="button" onclick="selectEmoji('🔭')" class="text-2xl hover:bg-gray-200 rounded p-1">🔭</button>
-                                    <button type="button" onclick="selectEmoji('🧬')" class="text-2xl hover:bg-gray-200 rounded p-1">🧬</button>
-                                    <button type="button" onclick="selectEmoji('📐')" class="text-2xl hover:bg-gray-200 rounded p-1">📐</button>
-                                    <button type="button" onclick="selectEmoji('🗺️')" class="text-2xl hover:bg-gray-200 rounded p-1">🗺️</button>
-                                    <button type="button" onclick="selectEmoji('🎭')" class="text-2xl hover:bg-gray-200 rounded p-1">🎭</button>
-                                    <button type="button" onclick="selectEmoji('🏃')" class="text-2xl hover:bg-gray-200 rounded p-1">🏃</button>
-                                    <button type="button" onclick="selectEmoji('🍎')" class="text-2xl hover:bg-gray-200 rounded p-1">🍎</button>
-                                    <button type="button" onclick="selectEmoji('🌱')" class="text-2xl hover:bg-gray-200 rounded p-1">🌱</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex space-x-3">
-                            <button onclick="createSubject()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Crear Materia</button>
-                            <button onclick="hideNewSubjectForm()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="subjects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Default subjects will be rendered here -->
-            </div>
-
-            <!-- Channel Chat View (Hidden by default) -->
-            <div id="channel-chat" class="hidden mt-8">
-                <div class="bg-white rounded-lg shadow-sm border">
-                    <div class="p-4 border-b flex items-center justify-between">
-                        <div class="flex items-center">
-                            <button onclick="closeChannel()" class="mr-3 text-gray-400 hover:text-gray-600">←</button>
-                            <h3 id="channel-title" class="text-lg font-semibold"></h3>
-                        </div>
-                    </div>
-                    <div class="p-4 h-96 overflow-y-auto" id="chat-messages">
-                        <!-- Messages will be populated here -->
-                    </div>
-                    <div class="p-4 border-t">
-                        <div class="flex space-x-2">
-                            <input type="text" id="message-input" placeholder="Escribe un mensaje..." class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <button onclick="sendMessage()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Enviar</button>
-                        </div>
-                    </div>
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
                 </div>
             </div>
         </div>
+
+
 
         <!-- Tareas Section -->
         <div id="tareas-section" class="section hidden">
@@ -542,9 +561,39 @@
                                 <!-- Options will be populated dynamically -->
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de entrega</label>
-                            <input type="date" id="task-due-date" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de entrega</label>
+                                <input type="date" id="task-due-date" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Prioridad</label>
+                                <select id="task-priority" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="media">🟡 Media</option>
+                                    <option value="alta">🔴 Alta</option>
+                                    <option value="baja">🟢 Baja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de actividad</label>
+                                <select id="task-type" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="tarea">📝 Tarea</option>
+                                    <option value="examen">📋 Examen</option>
+                                    <option value="proyecto">🎯 Proyecto</option>
+                                    <option value="extracurricular">🎨 Extracurricular</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Recordatorio</label>
+                                <select id="task-reminder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Sin recordatorio</option>
+                                    <option value="1">1 día antes</option>
+                                    <option value="3">3 días antes</option>
+                                    <option value="7">1 semana antes</option>
+                                </select>
+                            </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Archivo adjunto</label>
@@ -569,6 +618,33 @@
             <div class="mb-6">
                 <h2 class="text-2xl font-bold text-gray-900 mb-2">Calendario Académico</h2>
                 <p class="text-gray-600">Haz clic en cualquier día para agregar una anotación</p>
+                
+                <!-- Calendar Filters -->
+                <div class="flex flex-wrap gap-4 mt-4 p-4 bg-gray-50 rounded-lg">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Filtrar por materia:</label>
+                        <select id="calendar-filter" onchange="renderCalendar()" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Todas las materias</option>
+                            <option value="matematicas">🔢 Matemáticas</option>
+                            <option value="lenguaje">📖 Lenguaje</option>
+                            <option value="quimica">🧪 Química</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Mostrar:</label>
+                        <select id="calendar-type-filter" onchange="renderCalendar()" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="all">Todo</option>
+                            <option value="tasks">Solo tareas</option>
+                            <option value="notes">Solo recordatorios</option>
+                            <option value="exams">Solo exámenes</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="clearCalendarFilters()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors">
+                            Limpiar filtros
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white rounded-lg shadow-sm border">
@@ -590,6 +666,377 @@
                     <div id="calendar-grid" class="grid grid-cols-7 gap-1">
                         <!-- Calendar days will be populated here -->
                     </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Focus Mode Section -->
+        <div id="focus-section" class="section hidden">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Modo Concentración</h2>
+                <p class="text-gray-600">Elimina distracciones y mantén el enfoque en tus estudios</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Pomodoro Timer -->
+                <div class="bg-white rounded-xl shadow-sm border p-8">
+                    <h3 class="text-xl font-semibold mb-6 text-center">⏰ Temporizador Pomodoro</h3>
+                    
+                    <div class="text-center mb-8">
+                        <div class="w-48 h-48 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-6">
+                            <div class="text-4xl font-bold text-white" id="timer-display">25:00</div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-center space-x-4">
+                                <button onclick="startTimer()" id="start-btn" class="px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                                    ▶️ Iniciar
+                                </button>
+                                <button onclick="pauseTimer()" id="pause-btn" class="px-6 py-3 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-700 transition-colors hidden">
+                                    ⏸️ Pausar
+                                </button>
+                                <button onclick="resetTimer()" class="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                                    🔄 Reiniciar
+                                </button>
+                            </div>
+                            
+                            <div class="flex justify-center space-x-4 text-sm">
+                                <button onclick="setTimerMode('work')" id="work-mode-btn" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium">
+                                    📚 Estudio (25min)
+                                </button>
+                                <button onclick="setTimerMode('break')" id="break-mode-btn" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium">
+                                    ☕ Descanso (5min)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Session Stats -->
+                    <div class="border-t pt-6">
+                        <h4 class="font-semibold mb-4">📊 Estadísticas de la sesión</h4>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-blue-600" id="completed-pomodoros">0</div>
+                                <div class="text-sm text-gray-600">Pomodoros completados</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-600" id="total-study-time">0h 0m</div>
+                                <div class="text-sm text-gray-600">Tiempo total de estudio</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Focus Settings -->
+                <div class="space-y-6">
+                    <!-- Ambient Sounds -->
+                    <div class="bg-white rounded-xl shadow-sm border p-6">
+                        <h3 class="text-lg font-semibold mb-4">🎵 Sonidos Ambientales</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="playAmbientSound('rain')" class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg text-center transition-colors">
+                                🌧️ Lluvia
+                            </button>
+                            <button onclick="playAmbientSound('forest')" class="p-4 bg-green-50 hover:bg-green-100 rounded-lg text-center transition-colors">
+                                🌲 Bosque
+                            </button>
+                            <button onclick="playAmbientSound('ocean')" class="p-4 bg-cyan-50 hover:bg-cyan-100 rounded-lg text-center transition-colors">
+                                🌊 Océano
+                            </button>
+                            <button onclick="playAmbientSound('silence')" class="p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-center transition-colors">
+                                🔇 Silencio
+                            </button>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Volumen</label>
+                            <input type="range" id="volume-slider" min="0" max="100" value="50" class="w-full">
+                        </div>
+                    </div>
+
+                    <!-- Focus Goals -->
+                    <div class="bg-white rounded-xl shadow-sm border p-6">
+                        <h3 class="text-lg font-semibold mb-4">🎯 Meta de Estudio</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Materia de enfoque</label>
+                                <select id="focus-subject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Seleccionar materia</option>
+                                    <option value="matematicas">🔢 Matemáticas</option>
+                                    <option value="lenguaje">📖 Lenguaje</option>
+                                    <option value="quimica">🧪 Química</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Meta de tiempo (minutos)</label>
+                                <input type="number" id="focus-goal" min="15" max="240" value="50" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium">Progreso de la meta</span>
+                                    <span class="text-sm text-gray-600" id="goal-progress-text">0 / 50 min</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%" id="goal-progress-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logros Section -->
+        <div id="logros-section" class="section hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Sistema de Logros</h2>
+                <p class="text-gray-600 mb-4">Celebra tus éxitos académicos y mantén la motivación</p>
+                
+                <!-- Introduction to Points System -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <span class="text-2xl">💎</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-blue-900 mb-2">¿Para qué sirven los puntos?</h3>
+                            <p class="text-blue-800 leading-relaxed">
+                                Los puntos que ganas al completar tareas y logros son tu medida de progreso académico. 
+                                Cada actividad completada te otorga puntos que reflejan tu dedicación y constancia. 
+                                <strong>Acumula puntos para desbloquear nuevos logros</strong> y demostrar tu crecimiento como estudiante. 
+                                ¡Entre más puntos tengas, más cerca estarás de convertirte en un estudiante ejemplar!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white p-8 mb-8">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold mb-4">🏆 Tu Progreso General</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-3xl font-bold" id="total-achievements">0</div>
+                            <div class="text-purple-100">Logros Desbloqueados</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold" id="current-streak">0</div>
+                            <div class="text-purple-100">Días Consecutivos</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold" id="total-points">0</div>
+                            <div class="text-purple-100">Puntos Totales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Categories -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Academic Achievements -->
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        📚 Logros Académicos
+                    </h3>
+                    <div class="space-y-4" id="academic-achievements">
+                        <!-- Achievements will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Productivity Achievements -->
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        ⚡ Logros de Productividad
+                    </h3>
+                    <div class="space-y-4" id="productivity-achievements">
+                        <!-- Achievements will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Challenge -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                    🎯 Desafío Semanal
+                </h3>
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h4 class="font-semibold text-lg" id="weekly-challenge-title">Semana Productiva</h4>
+                            <p class="text-gray-600" id="weekly-challenge-desc">Completa 5 sesiones de estudio esta semana</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-blue-600" id="weekly-progress">0/5</div>
+                            <div class="text-sm text-gray-500">Progreso</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full transition-all duration-500" style="width: 0%" id="weekly-progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consejos Section -->
+        <div id="consejos-section" class="section hidden">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Consejos Educativos</h2>
+                <p class="text-gray-600">Mejora tus hábitos de estudio y productividad</p>
+            </div>
+
+            <!-- AI Personalized Tips -->
+            <div class="bg-gradient-to-r from-green-500 to-teal-500 rounded-xl text-white p-8 mb-8">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Consejo Personalizado IA</h3>
+                        <p class="text-green-100">Basado en tu actividad reciente</p>
+                    </div>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-4">
+                    <p class="text-lg" id="ai-tip">Cargando consejo personalizado...</p>
+                </div>
+                <button onclick="generateNewTip()" class="mt-4 px-6 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg font-semibold transition-colors">
+                    🔄 Nuevo consejo
+                </button>
+            </div>
+
+            <!-- Tips Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <button onclick="showTipsCategory('study')" class="p-6 bg-white rounded-xl shadow-sm border hover:shadow-md transition-shadow text-left">
+                    <div class="text-3xl mb-3">📚</div>
+                    <h3 class="text-lg font-semibold mb-2">Hábitos de Estudio</h3>
+                    <p class="text-gray-600 text-sm">Técnicas efectivas para mejorar tu aprendizaje</p>
+                </button>
+                
+                <button onclick="showTipsCategory('time')" class="p-6 bg-white rounded-xl shadow-sm border hover:shadow-md transition-shadow text-left">
+                    <div class="text-3xl mb-3">⏰</div>
+                    <h3 class="text-lg font-semibold mb-2">Gestión del Tiempo</h3>
+                    <p class="text-gray-600 text-sm">Organiza tu tiempo de manera eficiente</p>
+                </button>
+                
+                <button onclick="showTipsCategory('focus')" class="p-6 bg-white rounded-xl shadow-sm border hover:shadow-md transition-shadow text-left">
+                    <div class="text-3xl mb-3">🎯</div>
+                    <h3 class="text-lg font-semibold mb-2">Concentración</h3>
+                    <p class="text-gray-600 text-sm">Mantén el foco y elimina distracciones</p>
+                </button>
+                
+                <button onclick="showTipsCategory('phone')" class="p-6 bg-white rounded-xl shadow-sm border hover:shadow-md transition-shadow text-left">
+                    <div class="text-3xl mb-3">📱</div>
+                    <h3 class="text-lg font-semibold mb-2">Uso del Celular</h3>
+                    <p class="text-gray-600 text-sm">Controla el uso de dispositivos móviles</p>
+                </button>
+                
+                <button onclick="showTipsCategory('wellness')" class="p-6 bg-white rounded-xl shadow-sm border hover:shadow-md transition-shadow text-left">
+                    <div class="text-3xl mb-3">🧘</div>
+                    <h3 class="text-lg font-semibold mb-2">Bienestar</h3>
+                    <p class="text-gray-600 text-sm">Técnicas de relajación y manejo del estrés</p>
+                </button>
+                
+                <button onclick="showTipsCategory('motivation')" class="p-6 bg-white rounded-xl shadow-sm border hover:shadow-md transition-shadow text-left">
+                    <div class="text-3xl mb-3">💪</div>
+                    <h3 class="text-lg font-semibold mb-2">Motivación</h3>
+                    <p class="text-gray-600 text-sm">Mantén la motivación y alcanza tus metas</p>
+                </button>
+            </div>
+
+            <!-- Tips Content Area -->
+            <div id="tips-content" class="bg-white rounded-xl shadow-sm border p-8">
+                <div class="text-center py-12">
+                    <div class="text-6xl mb-4">💡</div>
+                    <h3 class="text-xl font-semibold mb-2">Selecciona una categoría</h3>
+                    <p class="text-gray-600">Elige una categoría arriba para ver consejos específicos</p>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -657,6 +1104,28 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-white rounded-xl shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">⚡ Acciones Rápidas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="toggleNotifications()" id="notifications-btn" class="p-4 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🔕</div>
+                        <div class="font-medium">Silenciar notificaciones</div>
+                        <div class="text-sm opacity-75">(Demo)</div>
+                    </button>
+                    <button onclick="openTaskQuickView()" class="p-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📋</div>
+                        <div class="font-medium">Ver tareas pendientes</div>
+                        <div class="text-sm opacity-75">Vista rápida</div>
+                    </button>
+                    <button onclick="logStudySession()" class="p-4 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="font-medium">Registrar sesión</div>
+                        <div class="text-sm opacity-75">Guardar progreso</div>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -704,7 +1173,6 @@
     <script>
         // Global variables
         let currentSection = 'inicio';
-        let currentChannel = '';
         let currentDate = new Date();
         let selectedDay = null;
         let tasks = [];
@@ -720,24 +1188,86 @@
         };
         let userAccounts = {}; // Store user accounts
         let currentUser = null;
-        let customSubjects = {}; // Store custom subjects with their images
 
-        // Sample data
-        const channelMessages = {
-            matematicas: [
-                { user: 'Prof. García', message: 'Recuerden que el examen de álgebra es el viernes', time: '10:30 AM' },
-                { user: 'Ana', message: '¿Alguien puede ayudarme con el ejercicio 15?', time: '11:15 AM' },
-                { user: 'Carlos', message: 'Yo te ayudo Ana, es sobre factorización', time: '11:20 AM' }
+        // Focus Mode variables
+        let timerInterval = null;
+        let timerSeconds = 1500; // 25 minutes default
+        let isTimerRunning = false;
+        let currentTimerMode = 'work'; // 'work' or 'break'
+        let completedPomodoros = 0;
+        let totalStudyTime = 0;
+        let currentAmbientSound = null;
+        let notificationsSilenced = false;
+
+        // Achievement system
+        let achievements = {
+            academic: [
+                { id: 'first_task', name: 'Primera Tarea', desc: 'Completa tu primera tarea', icon: '📝', unlocked: false, points: 10 },
+                { id: 'task_master', name: 'Maestro de Tareas', desc: 'Completa 10 tareas', icon: '🎯', unlocked: false, points: 50 },
+                { id: 'perfect_week', name: 'Semana Perfecta', desc: 'Completa todas las tareas de la semana', icon: '⭐', unlocked: false, points: 100 },
+                { id: 'exam_ace', name: 'As de Exámenes', desc: 'Registra 5 exámenes', icon: '🏆', unlocked: false, points: 75 }
             ],
-            lenguaje: [
-                { user: 'Prof. Martínez', message: 'El ensayo debe tener mínimo 500 palabras', time: '9:00 AM' },
-                { user: 'María', message: 'Ya terminé mi análisis de "Cien años de soledad"', time: '2:30 PM' }
-            ],
-            quimica: [
-                { user: 'Prof. López', message: 'Laboratorio cancelado por mantenimiento', time: '8:00 AM' },
-                { user: 'Pedro', message: 'Gracias por avisar profesor', time: '8:05 AM' }
+            productivity: [
+                { id: 'first_pomodoro', name: 'Primer Pomodoro', desc: 'Completa tu primera sesión de 25 minutos', icon: '⏰', unlocked: false, points: 15 },
+                { id: 'focus_master', name: 'Maestro del Enfoque', desc: 'Completa 20 pomodoros', icon: '🎯', unlocked: false, points: 80 },
+                { id: 'early_bird', name: 'Madrugador', desc: 'Estudia antes de las 8 AM', icon: '🌅', unlocked: false, points: 25 },
+                { id: 'night_owl', name: 'Búho Nocturno', desc: 'Estudia después de las 10 PM', icon: '🦉', unlocked: false, points: 25 }
             ]
         };
+
+        // Tips database
+        let tipsDatabase = {
+            study: [
+                "Usa la técnica Feynman: explica el tema como si se lo enseñaras a un niño de 5 años.",
+                "Crea mapas mentales para conectar conceptos y mejorar la comprensión.",
+                "Estudia en sesiones de 25-30 minutos con descansos de 5 minutos.",
+                "Enseña lo que aprendes a otros para reforzar tu conocimiento.",
+                "Usa técnicas de memorización como acrónimos y rimas.",
+                "Revisa tus apuntes dentro de las 24 horas para mejorar la retención."
+            ],
+            time: [
+                "Usa la matriz de Eisenhower: urgente vs importante para priorizar tareas.",
+                "Planifica tu día la noche anterior para empezar con claridad.",
+                "Agrupa tareas similares para aprovechar el momentum mental.",
+                "Establece límites de tiempo para cada actividad (timeboxing).",
+                "Identifica tus horas más productivas y úsalas para tareas difíciles.",
+                "Usa la regla 2-2-2: 2 minutos para decidir, 2 horas para tareas importantes, 2 días para proyectos grandes."
+            ],
+            focus: [
+                "Elimina notificaciones durante el estudio para mantener la concentración.",
+                "Usa música instrumental o sonidos de la naturaleza para concentrarte.",
+                "Practica la técnica Pomodoro: 25 minutos de trabajo, 5 de descanso.",
+                "Crea un espacio de estudio libre de distracciones.",
+                "Usa la regla de los 2 minutos: si algo toma menos de 2 minutos, hazlo ahora.",
+                "Practica mindfulness para mejorar tu capacidad de concentración."
+            ],
+            phone: [
+                "Pon tu teléfono en modo avión durante las sesiones de estudio.",
+                "Usa apps que bloqueen redes sociales durante horas de estudio.",
+                "Coloca el teléfono en otra habitación mientras estudias.",
+                "Establece horarios específicos para revisar mensajes y redes sociales.",
+                "Usa la función 'No molestar' durante las horas de sueño.",
+                "Revisa el tiempo de pantalla semanalmente y establece límites."
+            ],
+            wellness: [
+                "Practica la respiración 4-7-8: inhala 4, mantén 7, exhala 8 segundos.",
+                "Toma descansos cada hora para estirar y relajar los ojos.",
+                "Mantén una postura correcta mientras estudias para evitar dolores.",
+                "Practica ejercicios de relajación muscular progresiva.",
+                "Medita 10 minutos al día para reducir el estrés.",
+                "Mantén un horario de sueño regular para mejorar la concentración."
+            ],
+            motivation: [
+                "Celebra los pequeños logros para mantener la motivación alta.",
+                "Visualiza tus metas académicas y el éxito que quieres alcanzar.",
+                "Rodéate de personas que apoyen tus objetivos académicos.",
+                "Recuerda por qué empezaste cuando sientas ganas de rendirte.",
+                "Establece recompensas para cuando completes tareas importantes.",
+                "Mantén un diario de gratitud para enfocarte en lo positivo."
+            ]
+        };
+
+
 
         // Default subjects configuration
         const defaultSubjects = {
@@ -764,8 +1294,7 @@
             }
         };
 
-        let currentSubjectImage = null;
-        let currentSubjectEmoji = '📚';
+
 
         // Initialize sample tasks
         tasks = [
@@ -822,8 +1351,6 @@
                 updateProgressStats();
             } else if (section === 'perfil') {
                 loadProfile();
-            } else if (section === 'canales') {
-                renderSubjects();
             }
         }
 
@@ -1148,254 +1675,7 @@
             });
         }
 
-        // Subject management functions
-        function renderSubjects() {
-            const container = document.getElementById('subjects-container');
-            container.innerHTML = '';
-            
-            // Render default subjects
-            Object.keys(defaultSubjects).forEach(subjectKey => {
-                const subject = defaultSubjects[subjectKey];
-                renderSubjectCard(subjectKey, subject, container);
-            });
-            
-            // Render custom subjects
-            Object.keys(customSubjects).forEach(subjectKey => {
-                const subject = customSubjects[subjectKey];
-                renderSubjectCard(subjectKey, subject, container);
-            });
-        }
 
-        function renderSubjectCard(subjectKey, subject, container) {
-            const subjectDiv = document.createElement('div');
-            subjectDiv.className = 'bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer relative';
-            
-            const messageCount = channelMessages[subjectKey] ? channelMessages[subjectKey].length : 0;
-            
-            subjectDiv.innerHTML = `
-                <div class="p-6" onclick="openChannel('${subjectKey}')">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 ${subject.bgColor || 'bg-gray-100'} rounded-lg flex items-center justify-center overflow-hidden">
-                            ${subject.image ? 
-                                `<img src="${subject.image}" alt="${subject.name}" class="w-full h-full object-cover">` :
-                                `<span class="text-2xl">${subject.emoji}</span>`
-                            }
-                        </div>
-                        <div class="ml-4 flex-1">
-                            <h3 class="text-lg font-semibold text-gray-900">${subject.name}</h3>
-                            <p class="text-sm text-gray-500">${messageCount} mensajes</p>
-                        </div>
-                        ${!subject.isDefault ? `
-                            <button onclick="event.stopPropagation(); deleteSubject('${subjectKey}')" class="text-gray-400 hover:text-red-500 ml-2">
-                                🗑️
-                            </button>
-                        ` : ''}
-                    </div>
-                    <p class="text-gray-600 text-sm">${subject.description}</p>
-                </div>
-            `;
-            
-            container.appendChild(subjectDiv);
-        }
-
-        function showNewSubjectForm() {
-            document.getElementById('new-subject-form').classList.remove('hidden');
-            resetSubjectForm();
-        }
-
-        function hideNewSubjectForm() {
-            document.getElementById('new-subject-form').classList.add('hidden');
-            document.getElementById('emoji-picker').classList.add('hidden');
-            resetSubjectForm();
-        }
-
-        function resetSubjectForm() {
-            document.getElementById('subject-name').value = '';
-            document.getElementById('subject-description').value = '';
-            document.getElementById('subject-image-input').value = '';
-            currentSubjectImage = null;
-            currentSubjectEmoji = '📚';
-            updateSubjectImagePreview();
-        }
-
-        function handleSubjectImageChange() {
-            const fileInput = document.getElementById('subject-image-input');
-            const file = fileInput.files[0];
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    currentSubjectImage = e.target.result;
-                    updateSubjectImagePreview();
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function showEmojiPicker() {
-            const picker = document.getElementById('emoji-picker');
-            picker.classList.toggle('hidden');
-        }
-
-        function selectEmoji(emoji) {
-            currentSubjectEmoji = emoji;
-            currentSubjectImage = null; // Clear image when emoji is selected
-            document.getElementById('subject-image-input').value = '';
-            updateSubjectImagePreview();
-            document.getElementById('emoji-picker').classList.add('hidden');
-        }
-
-        function updateSubjectImagePreview() {
-            const imageDisplay = document.getElementById('subject-image-display');
-            const emojiPreview = document.getElementById('subject-emoji-preview');
-            
-            if (currentSubjectImage) {
-                imageDisplay.src = currentSubjectImage;
-                imageDisplay.classList.remove('hidden');
-                emojiPreview.classList.add('hidden');
-            } else {
-                imageDisplay.classList.add('hidden');
-                emojiPreview.classList.remove('hidden');
-                emojiPreview.textContent = currentSubjectEmoji;
-            }
-        }
-
-        function createSubject() {
-            const name = document.getElementById('subject-name').value.trim();
-            const description = document.getElementById('subject-description').value.trim();
-            
-            if (!name) {
-                alert('Por favor ingresa el nombre de la materia');
-                return;
-            }
-            
-            // Generate a unique key for the subject
-            const subjectKey = name.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
-            
-            // Check if subject already exists
-            if (defaultSubjects[subjectKey] || customSubjects[subjectKey]) {
-                alert('Ya existe una materia con ese nombre');
-                return;
-            }
-            
-            // Create new subject
-            const newSubject = {
-                name: name,
-                description: description || 'Materia personalizada',
-                emoji: currentSubjectEmoji,
-                image: currentSubjectImage,
-                bgColor: 'bg-gray-100',
-                isDefault: false
-            };
-            
-            customSubjects[subjectKey] = newSubject;
-            channelMessages[subjectKey] = []; // Initialize empty message array
-            
-            renderSubjects();
-            hideNewSubjectForm();
-            
-            alert(`¡Materia "${name}" creada exitosamente!`);
-        }
-
-        function deleteSubject(subjectKey) {
-            const subject = customSubjects[subjectKey];
-            if (subject && confirm(`¿Estás seguro de que quieres eliminar la materia "${subject.name}"?`)) {
-                delete customSubjects[subjectKey];
-                delete channelMessages[subjectKey];
-                renderSubjects();
-            }
-        }
-
-        // Channel functions
-        function openChannel(channel) {
-            currentChannel = channel;
-            
-            // Get channel name from default or custom subjects
-            let channelName = '';
-            let channelIcon = '';
-            
-            if (defaultSubjects[channel]) {
-                channelName = defaultSubjects[channel].name;
-                channelIcon = defaultSubjects[channel].emoji;
-            } else if (customSubjects[channel]) {
-                channelName = customSubjects[channel].name;
-                channelIcon = customSubjects[channel].emoji;
-            } else {
-                channelName = 'Canal Desconocido';
-                channelIcon = '📚';
-            }
-            
-            document.getElementById('channel-title').textContent = `${channelIcon} ${channelName}`;
-            document.getElementById('channel-chat').classList.remove('hidden');
-            
-            // Load messages
-            const messagesContainer = document.getElementById('chat-messages');
-            messagesContainer.innerHTML = '';
-            
-            channelMessages[channel].forEach(msg => {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'mb-4';
-                messageDiv.innerHTML = `
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-sm font-medium">
-                            ${msg.user.charAt(0)}
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2">
-                                <span class="font-medium text-sm">${msg.user}</span>
-                                <span class="text-xs text-gray-500">${msg.time}</span>
-                            </div>
-                            <p class="text-sm text-gray-700 mt-1">${msg.message}</p>
-                        </div>
-                    </div>
-                `;
-                messagesContainer.appendChild(messageDiv);
-            });
-            
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function closeChannel() {
-            document.getElementById('channel-chat').classList.add('hidden');
-            currentChannel = '';
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('message-input');
-            const message = input.value.trim();
-            
-            if (message && currentChannel) {
-                const newMessage = {
-                    user: 'Tú',
-                    message: message,
-                    time: new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
-                };
-                
-                channelMessages[currentChannel].push(newMessage);
-                
-                const messagesContainer = document.getElementById('chat-messages');
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'mb-4';
-                messageDiv.innerHTML = `
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-medium text-white">
-                            T
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2">
-                                <span class="font-medium text-sm">Tú</span>
-                                <span class="text-xs text-gray-500">${newMessage.time}</span>
-                            </div>
-                            <p class="text-sm text-gray-700 mt-1">${message}</p>
-                        </div>
-                    </div>
-                `;
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                
-                input.value = '';
-            }
-        }
 
         // Task functions
         function updateSubjectSelectors() {
@@ -1409,20 +1689,6 @@
             // Add default subjects
             Object.keys(defaultSubjects).forEach(key => {
                 const subject = defaultSubjects[key];
-                const taskOption = document.createElement('option');
-                taskOption.value = key;
-                taskOption.textContent = subject.name;
-                taskSelect.appendChild(taskOption);
-                
-                const noteOption = document.createElement('option');
-                noteOption.value = key;
-                noteOption.textContent = `${subject.emoji} ${subject.name}`;
-                noteSelect.appendChild(noteOption);
-            });
-            
-            // Add custom subjects
-            Object.keys(customSubjects).forEach(key => {
-                const subject = customSubjects[key];
                 const taskOption = document.createElement('option');
                 taskOption.value = key;
                 taskOption.textContent = subject.name;
@@ -1454,6 +1720,9 @@
             const description = document.getElementById('task-description').value.trim();
             const subject = document.getElementById('task-subject').value;
             const dueDate = document.getElementById('task-due-date').value;
+            const priority = document.getElementById('task-priority').value;
+            const type = document.getElementById('task-type').value;
+            const reminder = document.getElementById('task-reminder').value;
             const fileInput = document.getElementById('task-file');
             
             if (!title) {
@@ -1466,6 +1735,9 @@
                 title: title,
                 description: description,
                 subject: subject,
+                priority: priority,
+                type: type,
+                reminder: reminder,
                 fileName: fileInput.files[0] ? fileInput.files[0].name : null,
                 completed: false,
                 createdAt: new Date(),
@@ -1475,12 +1747,18 @@
             tasks.unshift(newTask);
             renderTasks();
             hideNewTaskForm();
+            checkAchievements();
             if (isAcademicMode) {
                 updateProgressStats();
             }
             // Refresh calendar to show new task due date
             if (currentSection === 'calendario') {
                 renderCalendar();
+            }
+            
+            // Show reminder notification if set
+            if (reminder && dueDate) {
+                showReminderNotification(newTask);
             }
         }
 
@@ -1500,13 +1778,28 @@
             }
             
             tasks.forEach(task => {
-                // Get subject info from default or custom subjects
-                let subjectInfo = defaultSubjects[task.subject] || customSubjects[task.subject];
+                // Get subject info from default subjects
+                let subjectInfo = defaultSubjects[task.subject];
                 if (!subjectInfo) {
                     subjectInfo = { name: 'Materia Desconocida', emoji: '📚', bgColor: 'bg-gray-100' };
                 }
                 
                 const subjectColorClass = `${subjectInfo.bgColor.replace('bg-', 'bg-').replace('-100', '-100')} ${subjectInfo.bgColor.replace('bg-', 'text-').replace('-100', '-800')}`;
+                
+                // Priority colors and icons
+                const priorityConfig = {
+                    alta: { color: 'bg-red-100 text-red-800', icon: '🔴' },
+                    media: { color: 'bg-yellow-100 text-yellow-800', icon: '🟡' },
+                    baja: { color: 'bg-green-100 text-green-800', icon: '🟢' }
+                };
+                
+                // Type icons
+                const typeIcons = {
+                    tarea: '📝',
+                    examen: '📋',
+                    proyecto: '🎯',
+                    extracurricular: '🎨'
+                };
                 
                 const taskDiv = document.createElement('div');
                 taskDiv.className = `task-card bg-white rounded-lg shadow-sm border p-6 ${task.completed ? 'opacity-75' : ''}`;
@@ -1521,6 +1814,12 @@
                                 <span class="px-2 py-1 text-xs font-medium rounded-full ${subjectColorClass}">
                                     ${subjectInfo.emoji} ${subjectInfo.name}
                                 </span>
+                                ${task.priority ? `<span class="px-2 py-1 text-xs font-medium rounded-full ${priorityConfig[task.priority].color}">
+                                    ${priorityConfig[task.priority].icon} ${task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
+                                </span>` : ''}
+                                ${task.type ? `<span class="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-700">
+                                    ${typeIcons[task.type]} ${task.type.charAt(0).toUpperCase() + task.type.slice(1)}
+                                </span>` : ''}
                             </div>
                             ${task.description ? `<p class="text-gray-600 mb-3">${task.description}</p>` : ''}
                             ${task.fileName ? `
@@ -1806,8 +2105,8 @@
             }
             
             dayNotes.forEach((note, index) => {
-                // Get subject info from default or custom subjects
-                let subjectInfo = defaultSubjects[note.subject] || customSubjects[note.subject];
+                // Get subject info from default subjects
+                let subjectInfo = defaultSubjects[note.subject];
                 let subjectIcon = '📝';
                 let subjectName = 'Sin materia';
                 
@@ -1910,11 +2209,591 @@
         }
 
         // Event listeners
-        document.getElementById('message-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
+
+        // Focus Mode Functions
+        function startTimer() {
+            if (!isTimerRunning) {
+                isTimerRunning = true;
+                document.getElementById('start-btn').classList.add('hidden');
+                document.getElementById('pause-btn').classList.remove('hidden');
+                
+                timerInterval = setInterval(() => {
+                    timerSeconds--;
+                    updateTimerDisplay();
+                    updateFocusGoalProgress();
+                    
+                    if (timerSeconds <= 0) {
+                        completePomodoro();
+                    }
+                }, 1000);
             }
-        });
+        }
+
+        function pauseTimer() {
+            if (isTimerRunning) {
+                isTimerRunning = false;
+                clearInterval(timerInterval);
+                document.getElementById('start-btn').classList.remove('hidden');
+                document.getElementById('pause-btn').classList.add('hidden');
+            }
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            timerSeconds = currentTimerMode === 'work' ? 1500 : 300;
+            updateTimerDisplay();
+            updateFocusGoalProgress();
+        }
+
+        function setTimerMode(mode) {
+            pauseTimer();
+            currentTimerMode = mode;
+            timerSeconds = mode === 'work' ? 1500 : 300;
+            updateTimerDisplay();
+            
+            // Update button styles
+            const workBtn = document.getElementById('work-mode-btn');
+            const breakBtn = document.getElementById('break-mode-btn');
+            
+            if (mode === 'work') {
+                workBtn.className = 'px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium';
+                breakBtn.className = 'px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium';
+            } else {
+                breakBtn.className = 'px-4 py-2 bg-green-100 text-green-800 rounded-lg font-medium';
+                workBtn.className = 'px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium';
+            }
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            document.getElementById('timer-display').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function completePomodoro() {
+            pauseTimer();
+            
+            if (currentTimerMode === 'work') {
+                completedPomodoros++;
+                totalStudyTime += 25;
+                document.getElementById('completed-pomodoros').textContent = completedPomodoros;
+                updateStudyTimeDisplay();
+                checkAchievements();
+                
+                // Auto switch to break
+                setTimerMode('break');
+                showNotification('¡Pomodoro completado! Tiempo de descanso.', 'success');
+            } else {
+                // Auto switch back to work
+                setTimerMode('work');
+                showNotification('¡Descanso terminado! Hora de estudiar.', 'info');
+            }
+        }
+
+        function updateStudyTimeDisplay() {
+            const hours = Math.floor(totalStudyTime / 60);
+            const minutes = totalStudyTime % 60;
+            document.getElementById('total-study-time').textContent = `${hours}h ${minutes}m`;
+        }
+
+        function updateFocusGoalProgress() {
+            const goal = parseInt(document.getElementById('focus-goal').value) || 50;
+            const progress = Math.min(totalStudyTime, goal);
+            const percentage = (progress / goal) * 100;
+            
+            document.getElementById('goal-progress-text').textContent = `${progress} / ${goal} min`;
+            document.getElementById('goal-progress-bar').style.width = `${percentage}%`;
+        }
+
+        function playAmbientSound(sound) {
+            // Simulate ambient sound selection (no actual audio due to limitations)
+            currentAmbientSound = sound;
+            
+            // Update button states
+            document.querySelectorAll('[onclick^="playAmbientSound"]').forEach(btn => {
+                btn.className = btn.className.replace('bg-blue-100', 'bg-blue-50')
+                                              .replace('bg-green-100', 'bg-green-50')
+                                              .replace('bg-cyan-100', 'bg-cyan-50')
+                                              .replace('bg-gray-100', 'bg-gray-50');
+            });
+            
+            // Highlight selected sound
+            event.target.className = event.target.className.replace('-50', '-100');
+            
+            const soundNames = {
+                rain: 'Lluvia',
+                forest: 'Bosque',
+                ocean: 'Océano',
+                silence: 'Silencio'
+            };
+            
+            showNotification(`Sonido seleccionado: ${soundNames[sound]}`, 'info');
+        }
+
+        function toggleNotifications() {
+            notificationsSilenced = !notificationsSilenced;
+            const btn = document.getElementById('notifications-btn');
+            
+            if (notificationsSilenced) {
+                btn.innerHTML = '🔔 Activar notificaciones (Demo)';
+                btn.className = 'w-full p-3 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-left transition-colors';
+                showNotification('Notificaciones silenciadas (Demo)', 'info');
+            } else {
+                btn.innerHTML = '🔕 Silenciar notificaciones (Demo)';
+                btn.className = 'w-full p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-left transition-colors';
+                showNotification('Notificaciones activadas (Demo)', 'info');
+            }
+        }
+
+        function openTaskQuickView() {
+            const pendingTasks = tasks.filter(t => !t.completed);
+            let message = 'Tareas pendientes:\n\n';
+            
+            if (pendingTasks.length === 0) {
+                message = '¡Excelente! No tienes tareas pendientes.';
+            } else {
+                pendingTasks.slice(0, 5).forEach((task, index) => {
+                    const priority = task.priority === 'alta' ? '🔴' : task.priority === 'media' ? '🟡' : '🟢';
+                    message += `${priority} ${task.title}\n`;
+                });
+                
+                if (pendingTasks.length > 5) {
+                    message += `\n... y ${pendingTasks.length - 5} más`;
+                }
+            }
+            
+            showNotification(message, 'info');
+        }
+
+        function logStudySession() {
+            const subject = document.getElementById('focus-subject').value;
+            const subjectName = subject ? defaultSubjects[subject]?.name || 'General' : 'General';
+            
+            showNotification(`Sesión de estudio registrada: ${subjectName} - ${Math.floor(totalStudyTime / 60)}h ${totalStudyTime % 60}m`, 'success');
+            
+            // Reset session stats
+            completedPomodoros = 0;
+            totalStudyTime = 0;
+            document.getElementById('completed-pomodoros').textContent = '0';
+            document.getElementById('total-study-time').textContent = '0h 0m';
+            updateFocusGoalProgress();
+        }
+
+        // Achievement Functions
+        function checkAchievements() {
+            const completedTasks = tasks.filter(t => t.completed).length;
+            const examTasks = tasks.filter(t => t.type === 'examen').length;
+            
+            // Check academic achievements
+            if (completedTasks >= 1 && !achievements.academic[0].unlocked) {
+                unlockAchievement('academic', 0);
+            }
+            if (completedTasks >= 10 && !achievements.academic[1].unlocked) {
+                unlockAchievement('academic', 1);
+            }
+            if (examTasks >= 5 && !achievements.academic[3].unlocked) {
+                unlockAchievement('academic', 3);
+            }
+            
+            // Check productivity achievements
+            if (completedPomodoros >= 1 && !achievements.productivity[0].unlocked) {
+                unlockAchievement('productivity', 0);
+            }
+            if (completedPomodoros >= 20 && !achievements.productivity[1].unlocked) {
+                unlockAchievement('productivity', 1);
+            }
+            
+            updateAchievementDisplay();
+        }
+
+        function unlockAchievement(category, index) {
+            achievements[category][index].unlocked = true;
+            const achievement = achievements[category][index];
+            
+            showNotification(`🏆 ¡Logro desbloqueado!\n${achievement.name}\n+${achievement.points} puntos`, 'success');
+        }
+
+        function updateAchievementDisplay() {
+            const academicContainer = document.getElementById('academic-achievements');
+            const productivityContainer = document.getElementById('productivity-achievements');
+            
+            academicContainer.innerHTML = '';
+            productivityContainer.innerHTML = '';
+            
+            let totalUnlocked = 0;
+            let totalPoints = 0;
+            
+            // Render academic achievements
+            achievements.academic.forEach(achievement => {
+                if (achievement.unlocked) {
+                    totalUnlocked++;
+                    totalPoints += achievement.points;
+                }
+                
+                const achievementDiv = document.createElement('div');
+                achievementDiv.className = `flex items-center p-4 rounded-lg border ${achievement.unlocked ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`;
+                achievementDiv.innerHTML = `
+                    <div class="text-3xl mr-4 ${achievement.unlocked ? '' : 'grayscale opacity-50'}">${achievement.icon}</div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold ${achievement.unlocked ? 'text-green-800' : 'text-gray-600'}">${achievement.name}</h4>
+                        <p class="text-sm ${achievement.unlocked ? 'text-green-600' : 'text-gray-500'}">${achievement.desc}</p>
+                        <span class="text-xs font-medium ${achievement.unlocked ? 'text-green-700' : 'text-gray-400'}">${achievement.points} puntos</span>
+                    </div>
+                    ${achievement.unlocked ? '<div class="text-green-600 text-xl">✓</div>' : ''}
+                `;
+                academicContainer.appendChild(achievementDiv);
+            });
+            
+            // Render productivity achievements
+            achievements.productivity.forEach(achievement => {
+                if (achievement.unlocked) {
+                    totalUnlocked++;
+                    totalPoints += achievement.points;
+                }
+                
+                const achievementDiv = document.createElement('div');
+                achievementDiv.className = `flex items-center p-4 rounded-lg border ${achievement.unlocked ? 'bg-blue-50 border-blue-200' : 'bg-gray-50 border-gray-200'}`;
+                achievementDiv.innerHTML = `
+                    <div class="text-3xl mr-4 ${achievement.unlocked ? '' : 'grayscale opacity-50'}">${achievement.icon}</div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold ${achievement.unlocked ? 'text-blue-800' : 'text-gray-600'}">${achievement.name}</h4>
+                        <p class="text-sm ${achievement.unlocked ? 'text-blue-600' : 'text-gray-500'}">${achievement.desc}</p>
+                        <span class="text-xs font-medium ${achievement.unlocked ? 'text-blue-700' : 'text-gray-400'}">${achievement.points} puntos</span>
+                    </div>
+                    ${achievement.unlocked ? '<div class="text-blue-600 text-xl">✓</div>' : ''}
+                `;
+                productivityContainer.appendChild(achievementDiv);
+            });
+            
+            // Update totals
+            document.getElementById('total-achievements').textContent = totalUnlocked;
+            document.getElementById('total-points').textContent = totalPoints;
+            
+            // Update weekly challenge (simulate progress)
+            const weeklyProgress = Math.min(completedPomodoros, 5);
+            document.getElementById('weekly-progress').textContent = `${weeklyProgress}/5`;
+            document.getElementById('weekly-progress-bar').style.width = `${(weeklyProgress / 5) * 100}%`;
+        }
+
+        // Tips Functions
+        function generateNewTip() {
+            const allTips = Object.values(tipsDatabase).flat();
+            const randomTip = allTips[Math.floor(Math.random() * allTips.length)];
+            
+            // Personalize based on user activity
+            const completedTasks = tasks.filter(t => t.completed).length;
+            const pendingTasks = tasks.filter(t => !t.completed).length;
+            
+            let personalizedTip = randomTip;
+            
+            if (pendingTasks > 5) {
+                personalizedTip = "Tienes varias tareas pendientes. Considera usar la técnica Pomodoro para abordarlas una por una.";
+            } else if (completedTasks > 10) {
+                personalizedTip = "¡Excelente progreso! Mantén el momentum celebrando tus logros y estableciendo nuevas metas.";
+            } else if (completedPomodoros > 5) {
+                personalizedTip = "Has demostrado gran disciplina con el Focus Mode. Considera aumentar gradualmente tus sesiones de estudio.";
+            }
+            
+            document.getElementById('ai-tip').textContent = personalizedTip;
+        }
+
+        function showTipsCategory(category) {
+            const categoryTips = tipsDatabase[category];
+            const categoryNames = {
+                study: 'Hábitos de Estudio',
+                time: 'Gestión del Tiempo',
+                focus: 'Concentración',
+                phone: 'Uso del Celular',
+                wellness: 'Bienestar',
+                motivation: 'Motivación'
+            };
+            
+            const categoryIcons = {
+                study: '📚',
+                time: '⏰',
+                focus: '🎯',
+                phone: '📱',
+                wellness: '🧘',
+                motivation: '💪'
+            };
+            
+            const content = document.getElementById('tips-content');
+            content.innerHTML = `
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold mb-2 flex items-center">
+                        <span class="text-3xl mr-3">${categoryIcons[category]}</span>
+                        ${categoryNames[category]}
+                    </h3>
+                    <p class="text-gray-600">Consejos prácticos para mejorar en esta área</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${categoryTips.map((tip, index) => `
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-100">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">
+                                    ${index + 1}
+                                </div>
+                                <p class="text-gray-800 leading-relaxed">${tip}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="mt-8 text-center">
+                    <button onclick="generateNewTip()" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        🤖 Generar consejo personalizado
+                    </button>
+                </div>
+            `;
+        }
+
+        // Calendar Filter Functions
+        function clearCalendarFilters() {
+            document.getElementById('calendar-filter').value = '';
+            document.getElementById('calendar-type-filter').value = 'all';
+            renderCalendar();
+        }
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full`;
+            
+            const colors = {
+                success: 'bg-green-500 text-white',
+                error: 'bg-red-500 text-white',
+                info: 'bg-blue-500 text-white',
+                warning: 'bg-yellow-500 text-black'
+            };
+            
+            notification.className += ` ${colors[type]}`;
+            notification.innerHTML = `
+                <div class="flex items-start">
+                    <div class="flex-1">
+                        <p class="whitespace-pre-line">${message}</p>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-lg leading-none">×</button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        function showReminderNotification(task) {
+            const reminderDays = parseInt(task.reminder);
+            const dueDate = new Date(task.dueDate);
+            const reminderDate = new Date(dueDate.getTime() - (reminderDays * 24 * 60 * 60 * 1000));
+            const now = new Date();
+            
+            if (reminderDate <= now) {
+                showNotification(`📅 Recordatorio: "${task.title}" vence en ${reminderDays} día(s)`, 'warning');
+            }
+        }
+
+        // Enhanced renderCalendar with filters
+        function renderCalendar() {
+            const monthNames = [
+                'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+            ];
+            
+            document.getElementById('calendar-month').textContent = 
+                `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = '';
+            
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+            
+            // Get filter values
+            const subjectFilter = document.getElementById('calendar-filter')?.value || '';
+            const typeFilter = document.getElementById('calendar-type-filter')?.value || 'all';
+            
+            // Subject colors for calendar days
+            const subjectColors = {
+                matematicas: 'bg-blue-100 border-blue-300 text-blue-800',
+                lenguaje: 'bg-red-100 border-red-300 text-red-800',
+                quimica: 'bg-yellow-100 border-yellow-300 text-yellow-800'
+            };
+            
+            for (let i = 0; i < 42; i++) {
+                const cellDate = new Date(startDate);
+                cellDate.setDate(startDate.getDate() + i);
+                
+                const dateKey = cellDate.toDateString();
+                let dayNotes = notes[dateKey];
+                
+                // Convert old format to new format
+                if (dayNotes && !Array.isArray(dayNotes)) {
+                    if (typeof dayNotes === 'string') {
+                        dayNotes = [{ text: dayNotes, time: '', subject: '', id: Date.now() }];
+                    } else {
+                        dayNotes = [{ ...dayNotes, id: Date.now() }];
+                    }
+                    notes[dateKey] = dayNotes;
+                }
+                
+                // Check for tasks due on this date
+                let dueTasks = tasks.filter(task => {
+                    if (!task.dueDate) return false;
+                    const taskDate = new Date(task.dueDate);
+                    return taskDate.toDateString() === cellDate.toDateString();
+                });
+                
+                // Apply filters
+                if (subjectFilter) {
+                    dueTasks = dueTasks.filter(task => task.subject === subjectFilter);
+                    if (dayNotes) {
+                        dayNotes = dayNotes.filter(note => note.subject === subjectFilter);
+                    }
+                }
+                
+                if (typeFilter !== 'all') {
+                    if (typeFilter === 'tasks') {
+                        dayNotes = [];
+                    } else if (typeFilter === 'notes') {
+                        dueTasks = [];
+                    } else if (typeFilter === 'exams') {
+                        dueTasks = dueTasks.filter(task => task.type === 'examen');
+                        dayNotes = [];
+                    }
+                }
+                
+                let dayClasses = 'calendar-day border p-2 cursor-pointer ';
+                
+                if (cellDate.getMonth() !== currentDate.getMonth()) {
+                    dayClasses += 'text-gray-400 bg-gray-50 border-gray-200';
+                } else if ((dayNotes && dayNotes.length > 0) || dueTasks.length > 0) {
+                    // Get unique subjects from all notes and tasks for this day
+                    const noteSubjects = dayNotes ? [...new Set(dayNotes.map(note => note.subject).filter(s => s))] : [];
+                    const taskSubjects = [...new Set(dueTasks.map(task => task.subject).filter(s => s))];
+                    const subjects = [...new Set([...noteSubjects, ...taskSubjects])];
+                    
+                    if (subjects.length === 1) {
+                        // Single subject
+                        dayClasses += subjectColors[subjects[0]];
+                    } else if (subjects.length > 1) {
+                        // Multiple subjects - create gradient effect
+                        const gradientColors = subjects.map(subject => {
+                            switch(subject) {
+                                case 'matematicas': return '#dbeafe'; // blue-100
+                                case 'lenguaje': return '#fee2e2'; // red-100
+                                case 'quimica': return '#fef3c7'; // yellow-100
+                                default: return '#f3f4f6'; // gray-100
+                            }
+                        });
+                        
+                        if (gradientColors.length === 2) {
+                            dayClasses += `border-gray-400`;
+                        } else {
+                            dayClasses += `border-gray-400`;
+                        }
+                    } else {
+                        // Notes/tasks without subjects
+                        dayClasses += 'bg-gray-100 border-gray-300 hover:bg-gray-150';
+                    }
+                } else {
+                    dayClasses += 'border-gray-200 hover:bg-gray-50';
+                }
+                
+                const dayDiv = document.createElement('div');
+                dayDiv.className = dayClasses;
+                
+                // Apply gradient background for multiple subjects
+                const allSubjects = [];
+                if (dayNotes && dayNotes.length > 0) {
+                    allSubjects.push(...dayNotes.map(note => note.subject).filter(s => s));
+                }
+                if (dueTasks.length > 0) {
+                    allSubjects.push(...dueTasks.map(task => task.subject).filter(s => s));
+                }
+                const uniqueSubjects = [...new Set(allSubjects)];
+                
+                if (uniqueSubjects.length > 1) {
+                    const gradientColors = uniqueSubjects.map(subject => {
+                        switch(subject) {
+                            case 'matematicas': return '#dbeafe';
+                            case 'lenguaje': return '#fee2e2';
+                            case 'quimica': return '#fef3c7';
+                            default: return '#f3f4f6';
+                        }
+                    });
+                    
+                    if (gradientColors.length === 2) {
+                        dayDiv.style.background = `linear-gradient(45deg, ${gradientColors[0]} 50%, ${gradientColors[1]} 50%)`;
+                    } else if (gradientColors.length === 3) {
+                        dayDiv.style.background = `linear-gradient(120deg, ${gradientColors[0]} 33%, ${gradientColors[1]} 33%, ${gradientColors[1]} 66%, ${gradientColors[2]} 66%)`;
+                    }
+                }
+                
+                let displayContent = '';
+                
+                // Show tasks first (with exclamation mark)
+                if (dueTasks.length > 0) {
+                    const firstTask = dueTasks[0];
+                    const isOverdue = firstTask.dueDate < new Date() && !firstTask.completed;
+                    const taskIcon = isOverdue ? '❗' : '❗';
+                    
+                    const displayText = dueTasks.length > 1 ? 
+                        `${firstTask.title.substring(0, 8)}... (+${dueTasks.length - 1})` :
+                        `${firstTask.title.substring(0, 12)}${firstTask.title.length > 12 ? '...' : ''}`;
+                    
+                    displayContent += `
+                        <div class="text-xs mt-1 truncate font-bold ${isOverdue ? 'text-red-600' : 'text-orange-600'}">
+                            ${taskIcon} ${displayText}
+                        </div>
+                    `;
+                }
+                
+                // Show notes
+                if (dayNotes && dayNotes.length > 0) {
+                    const firstNote = dayNotes[0];
+                    const timeDisplay = firstNote.time ? ` - ${firstNote.time}` : '';
+                    const subjectIcon = firstNote.subject === 'matematicas' ? '🔢' : 
+                                       firstNote.subject === 'lenguaje' ? '📖' : 
+                                       firstNote.subject === 'quimica' ? '🧪' : '📝';
+                    
+                    const displayText = dayNotes.length > 1 ? 
+                        `${firstNote.text.substring(0, 8)}... (+${dayNotes.length - 1})` :
+                        `${firstNote.text.substring(0, 10)}${firstNote.text.length > 10 ? '...' : ''}`;
+                    
+                    displayContent += `
+                        <div class="text-xs mt-1 truncate font-medium">
+                            ${subjectIcon} ${displayText}
+                        </div>
+                        ${timeDisplay ? `<div class="text-xs font-bold">${firstNote.time}</div>` : ''}
+                    `;
+                }
+                
+                dayDiv.innerHTML = `
+                    <div class="text-sm font-medium">${cellDate.getDate()}</div>
+                    ${(dayNotes && dayNotes.length > 0) || dueTasks.length > 0 ? '<div class="note-indicator"></div>' : ''}
+                    ${displayContent}
+                `;
+                
+                dayDiv.onclick = () => openNoteModal(cellDate);
+                grid.appendChild(dayDiv);
+            }
+        }
 
         // Initialize the app
         renderTasks();
@@ -1922,6 +2801,8 @@
         updateProfileDisplay();
         updateHeaderInfo();
         updateSubjectSelectors();
+        updateAchievementDisplay();
+        generateNewTip();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98012dc3e5cbe9b6',t:'MTc1ODAzNDI1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef4395b5b81161',t:'MTc2MDUzMDc1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
