@@ -51,7 +51,7 @@
                 <div class="flex items-center">
                     <h1 class="text-xl font-bold text-blue-600 cursor-pointer hover:text-blue-700 transition-colors" onclick="goToHome()">📚 AcadecoSCZ</h1>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4" id="user-header-info">
                     <span class="text-sm text-gray-600" id="header-student-name">Estudiante</span>
                     <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium" id="header-avatar">E</div>
                 </div>
@@ -98,8 +98,11 @@
                     </button>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button onclick="showSection('perfil')" class="text-gray-500 hover:text-gray-700 font-medium text-sm">
+                    <button onclick="showSection('perfil')" class="text-gray-500 hover:text-gray-700 font-medium text-sm" id="profile-nav-btn">
                         ⚙️ Perfil
+                    </button>
+                    <button onclick="logout()" class="text-gray-500 hover:text-gray-700 font-medium text-sm">
+                        🚪 Cerrar Sesión
                     </button>
                     <button onclick="goBackToMain()" class="px-3 py-1 text-sm text-gray-600 hover:text-gray-800">
                         ← Volver al inicio
@@ -212,34 +215,24 @@
                     <!-- Contact Section -->
                     <div class="mt-12 pt-8 border-t border-gray-200">
                         <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Contáctanos</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-4xl mx-auto">
                             <!-- Instagram -->
-                            <div class="text-center p-6 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
-                                <div class="text-4xl mb-4">📷</div>
-                                <h4 class="text-lg font-semibold mb-2">Instagram</h4>
-                                <p class="text-gray-600 mb-3">Síguenos para contenido educativo</p>
-                                <a href="https://instagram.com/acadecoscz" target="_blank" class="inline-block px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors">
+                            <div class="text-center p-8 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
+                                <div class="text-5xl mb-4">📷</div>
+                                <h4 class="text-xl font-semibold mb-3">Instagram</h4>
+                                <p class="text-gray-600 mb-4">Síguenos para contenido educativo</p>
+                                <a href="https://www.instagram.com/acadecoscz/" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors">
                                     @acadecoscz
                                 </a>
                             </div>
 
-                            <!-- Facebook -->
-                            <div class="text-center p-6 bg-blue-50 rounded-xl">
-                                <div class="text-4xl mb-4">📘</div>
-                                <h4 class="text-lg font-semibold mb-2">Facebook</h4>
-                                <p class="text-gray-600 mb-3">Únete a nuestra comunidad</p>
-                                <a href="https://facebook.com/acadecoscz" target="_blank" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                                    AcadecoSCZ
-                                </a>
-                            </div>
-
                             <!-- Phone Support -->
-                            <div class="text-center p-6 bg-green-50 rounded-xl">
-                                <div class="text-4xl mb-4">📞</div>
-                                <h4 class="text-lg font-semibold mb-2">Soporte Telefónico</h4>
-                                <p class="text-gray-600 mb-3">Quejas y reclamos</p>
-                                <a href="tel:123456789" class="inline-block px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors">
-                                    123-456-789
+                            <div class="text-center p-8 bg-green-50 rounded-xl">
+                                <div class="text-5xl mb-4">📞</div>
+                                <h4 class="text-xl font-semibold mb-3">Soporte Telefónico</h4>
+                                <p class="text-gray-600 mb-4">Quejas y reclamos</p>
+                                <a href="tel:+59178585730" class="inline-block px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors">
+                                    +591 78585730
                                 </a>
                             </div>
                         </div>
@@ -256,9 +249,164 @@
 
         <!-- Mi Progreso Section -->
         <div id="progreso-section" class="section hidden">
-            <div class="mb-6">
+            <div class="mb-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-2">Mi Progreso Académico</h2>
-                <p class="text-gray-600">Revisa tu rendimiento y estadísticas de estudio</p>
+                <p class="text-gray-600 mb-6">Revisa tu rendimiento y estadísticas de estudio</p>
+                
+                <!-- Toggle Introduction Button -->
+                <div class="mb-6">
+                    <button onclick="toggleProgressIntro()" id="progress-intro-toggle-btn" class="flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors">
+                        <span id="progress-intro-toggle-icon">📊</span>
+                        <span class="ml-2" id="progress-intro-toggle-text">Ver introducción al seguimiento de progreso</span>
+                    </button>
+                </div>
+                
+                <!-- Complete Introduction to Progress System -->
+                <div id="progress-intro" class="hidden space-y-6 mb-8">
+                    <!-- What is progress tracking -->
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">📊</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-blue-900 mb-2">¿Qué es el seguimiento de progreso?</h3>
+                                <p class="text-blue-800 leading-relaxed mb-3">
+                                    El seguimiento de progreso te permite <strong>visualizar tu rendimiento académico</strong> de manera clara y organizada. 
+                                    Aquí puedes ver estadísticas detalladas sobre tus tareas, materias y hábitos de estudio.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                    <div class="bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="font-semibold text-blue-900 mb-1">📈 Estadísticas Generales</div>
+                                        <div class="text-sm text-blue-700">Resumen completo de tu actividad académica</div>
+                                    </div>
+                                    <div class="bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="font-semibold text-blue-900 mb-1">📚 Progreso por Materia</div>
+                                        <div class="text-sm text-blue-700">Rendimiento específico en cada asignatura</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How statistics work -->
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">🔢</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-green-900 mb-2">¿Cómo funcionan las estadísticas?</h3>
+                                <p class="text-green-800 leading-relaxed mb-4">
+                                    Las estadísticas se actualizan automáticamente cada vez que interactúas con la plataforma. 
+                                    <strong>No necesitas hacer nada especial</strong>, solo usar AcadecoSCZ normalmente.
+                                </p>
+                                <div class="space-y-3">
+                                    <div class="flex items-start bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-xl mr-3 mt-1">✅</span>
+                                        <div>
+                                            <div class="font-medium text-green-900">Tareas Completadas</div>
+                                            <div class="text-sm text-green-700">Se cuentan automáticamente cuando marcas una tarea como terminada</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-xl mr-3 mt-1">📝</span>
+                                        <div>
+                                            <div class="font-medium text-green-900">Anotaciones del Calendario</div>
+                                            <div class="text-sm text-green-700">Cada recordatorio que agregas suma al total</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-xl mr-3 mt-1">📊</span>
+                                        <div>
+                                            <div class="font-medium text-green-900">Progreso por Materia</div>
+                                            <div class="text-sm text-green-700">Porcentaje calculado según tareas completadas vs. totales</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benefits of tracking -->
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-purple-900 mb-2">¿Por qué es importante hacer seguimiento?</h3>
+                                <p class="text-purple-800 leading-relaxed mb-3">
+                                    Hacer seguimiento de tu progreso te ayuda a <strong>identificar patrones</strong>, 
+                                    celebrar logros y detectar áreas que necesitan más atención.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="text-2xl mb-2">📈</div>
+                                        <div class="font-medium text-purple-900">Visualiza tu Crecimiento</div>
+                                        <div class="text-xs text-purple-700">Ve cómo mejoras con el tiempo</div>
+                                    </div>
+                                    <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="text-2xl mb-2">🎯</div>
+                                        <div class="font-medium text-purple-900">Identifica Fortalezas</div>
+                                        <div class="text-xs text-purple-700">Descubre en qué materias destacas</div>
+                                    </div>
+                                    <div class="text-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <div class="text-2xl mb-2">⚡</div>
+                                        <div class="font-medium text-purple-900">Mejora Estrategias</div>
+                                        <div class="text-xs text-purple-700">Ajusta tu método de estudio</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Getting started -->
+                    <div class="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-100">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <span class="text-2xl">🚀</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-orange-900 mb-2">¿Cómo empezar?</h3>
+                                <p class="text-orange-800 leading-relaxed mb-4">
+                                    ¡Es muy fácil! Solo comienza a usar las diferentes secciones de AcadecoSCZ y 
+                                    <strong>tu progreso se registrará automáticamente</strong>.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">📋</span>
+                                        <div>
+                                            <div class="font-medium text-orange-900">1. Crea tus primeras tareas</div>
+                                            <div class="text-sm text-orange-700">Ve a la sección "Tareas" y agrega actividades</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">✅</span>
+                                        <div>
+                                            <div class="font-medium text-orange-900">2. Marca tareas como completadas</div>
+                                            <div class="text-sm text-orange-700">Haz clic en el checkbox cuando termines</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">📅</span>
+                                        <div>
+                                            <div class="font-medium text-orange-900">3. Usa el calendario</div>
+                                            <div class="text-sm text-orange-700">Agrega recordatorios y fechas importantes</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center bg-white bg-opacity-50 rounded-lg p-3">
+                                        <span class="text-2xl mr-3">📊</span>
+                                        <div>
+                                            <div class="font-medium text-orange-900">4. Revisa tu progreso</div>
+                                            <div class="text-sm text-orange-700">Vuelve aquí para ver tus estadísticas</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Quick Stats -->
@@ -1247,32 +1395,18 @@
             }
         };
 
-        // Initialize sample tasks
-        tasks = [
-            {
-                id: 1,
-                title: 'Resolver ejercicios de álgebra',
-                description: 'Completar los ejercicios 1-20 del capítulo 5',
-                subject: 'matematicas',
-                fileName: 'ejercicios_algebra.pdf',
-                completed: false,
-                createdAt: new Date(),
-                dueDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) // 3 días desde hoy
-            },
-            {
-                id: 2,
-                title: 'Ensayo sobre García Márquez',
-                description: 'Análisis literario de "El amor en los tiempos del cólera"',
-                subject: 'lenguaje',
-                fileName: 'ensayo_garcia_marquez.docx',
-                completed: true,
-                createdAt: new Date(),
-                dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 días desde hoy
-            }
-        ];
+        // Initialize empty tasks array
+        tasks = [];
 
         // Navigation functions
         function showSection(section) {
+            // Check if user is trying to access profile without being logged in
+            if (section === 'perfil' && !currentUser) {
+                showNotification('Debes iniciar sesión para acceder al perfil', 'warning');
+                showAuthModal();
+                return;
+            }
+            
             // Hide all sections
             document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
             
@@ -1438,11 +1572,20 @@
             // Successful login
             currentUser = email;
             closeAuthModal();
+            
+            // Load user-specific profile data if exists
+            loadUserProfile(email);
+            
+            // Show user header info
+            document.getElementById('user-header-info').classList.remove('hidden');
+            
             // Enter academic mode after successful login
             isAcademicMode = true;
             document.getElementById('main-nav').classList.add('hidden');
             document.getElementById('academic-nav').classList.remove('hidden');
             showSection('progreso');
+            
+            showNotification(`¡Bienvenido de vuelta, ${studentProfile.name || 'Estudiante'}!`, 'success');
         }
 
         function enterAcademicMode() {
@@ -1455,6 +1598,62 @@
             document.getElementById('academic-nav').classList.add('hidden');
             document.getElementById('main-nav').classList.remove('hidden');
             showSection('inicio');
+        }
+
+        function logout() {
+            // Create custom confirmation modal instead of browser confirm
+            const confirmModal = document.createElement('div');
+            confirmModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            confirmModal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 max-w-sm mx-4">
+                    <h3 class="text-lg font-semibold mb-4">Cerrar Sesión</h3>
+                    <p class="text-gray-600 mb-6">¿Estás seguro de que quieres cerrar sesión?</p>
+                    <div class="flex space-x-3 justify-end">
+                        <button onclick="this.closest('.fixed').remove()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                            Cancelar
+                        </button>
+                        <button onclick="confirmLogout(); this.closest('.fixed').remove()" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(confirmModal);
+        }
+
+        function confirmLogout() {
+            currentUser = null;
+            isAcademicMode = false;
+            document.getElementById('academic-nav').classList.add('hidden');
+            document.getElementById('main-nav').classList.remove('hidden');
+            showSection('inicio');
+            
+            // Hide user header info
+            document.getElementById('user-header-info').classList.add('hidden');
+            
+            // Reset header info
+            document.getElementById('header-student-name').textContent = 'Estudiante';
+            const headerAvatar = document.getElementById('header-avatar');
+            headerAvatar.style.backgroundImage = '';
+            headerAvatar.textContent = 'E';
+            
+            // Reset profile data
+            studentProfile = {
+                name: '',
+                age: '',
+                course: '',
+                school: '',
+                profileImage: null
+            };
+            
+            // Clear tasks and notes for security
+            tasks = [];
+            notes = {};
+            
+            // Reset progress stats
+            updateProgressStats();
+            
+            showNotification('Sesión cerrada exitosamente', 'info');
         }
 
         function goToHome() {
@@ -1486,7 +1685,31 @@
         }
 
         // Profile functions
+        function loadUserProfile(email) {
+            // Load user-specific profile data
+            if (userAccounts[email] && userAccounts[email].profile) {
+                studentProfile = { ...userAccounts[email].profile };
+            } else {
+                // Initialize empty profile for new user
+                studentProfile = {
+                    name: '',
+                    age: '',
+                    course: '',
+                    school: '',
+                    profileImage: null
+                };
+            }
+            updateProfileDisplay();
+            updateHeaderInfo();
+        }
+
         function loadProfile() {
+            if (!currentUser) {
+                showNotification('Debes iniciar sesión para acceder al perfil', 'warning');
+                showAuthModal();
+                return;
+            }
+            
             document.getElementById('student-name').value = studentProfile.name;
             document.getElementById('student-age').value = studentProfile.age;
             document.getElementById('student-course').value = studentProfile.course;
@@ -1496,26 +1719,54 @@
         }
 
         function saveProfile() {
+            if (!currentUser) {
+                showNotification('Debes iniciar sesión para guardar el perfil', 'warning');
+                return;
+            }
+            
             studentProfile.name = document.getElementById('student-name').value.trim();
             studentProfile.age = document.getElementById('student-age').value;
             studentProfile.course = document.getElementById('student-course').value;
             studentProfile.school = document.getElementById('student-school').value.trim();
             
+            // Save profile to user account
+            if (!userAccounts[currentUser].profile) {
+                userAccounts[currentUser].profile = {};
+            }
+            userAccounts[currentUser].profile = { ...studentProfile };
+            
             updateProfileDisplay();
             updateHeaderInfo();
             
-            alert('¡Perfil guardado exitosamente!');
+            showNotification('¡Perfil guardado exitosamente!', 'success');
         }
 
         function resetProfile() {
+            if (!currentUser) {
+                showNotification('Debes iniciar sesión para restablecer el perfil', 'warning');
+                return;
+            }
+            
             if (confirm('¿Estás seguro de que quieres restablecer tu perfil?')) {
                 studentProfile = { name: '', age: '', course: '', school: '', profileImage: null };
+                
+                // Clear profile from user account
+                if (userAccounts[currentUser]) {
+                    userAccounts[currentUser].profile = { ...studentProfile };
+                }
+                
                 loadProfile();
                 updateHeaderInfo();
+                showNotification('Perfil restablecido', 'info');
             }
         }
 
         function handleProfileImageChange() {
+            if (!currentUser) {
+                showNotification('Debes iniciar sesión para cambiar la foto de perfil', 'warning');
+                return;
+            }
+            
             const fileInput = document.getElementById('profile-image-input');
             const file = fileInput.files[0];
             
@@ -1523,6 +1774,12 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     studentProfile.profileImage = e.target.result;
+                    
+                    // Save to user account
+                    if (userAccounts[currentUser] && userAccounts[currentUser].profile) {
+                        userAccounts[currentUser].profile.profileImage = e.target.result;
+                    }
+                    
                     updateProfileImageDisplay();
                     updateHeaderInfo();
                 };
@@ -1531,7 +1788,18 @@
         }
 
         function removeProfileImage() {
+            if (!currentUser) {
+                showNotification('Debes iniciar sesión para quitar la foto de perfil', 'warning');
+                return;
+            }
+            
             studentProfile.profileImage = null;
+            
+            // Save to user account
+            if (userAccounts[currentUser] && userAccounts[currentUser].profile) {
+                userAccounts[currentUser].profile.profileImage = null;
+            }
+            
             updateProfileImageDisplay();
             updateHeaderInfo();
             document.getElementById('profile-image-input').value = '';
@@ -2623,8 +2891,28 @@
             }
         }
 
+        // Progress intro toggle function
+        function toggleProgressIntro() {
+            const intro = document.getElementById('progress-intro');
+            const toggleIcon = document.getElementById('progress-intro-toggle-icon');
+            const toggleText = document.getElementById('progress-intro-toggle-text');
+            
+            if (intro.classList.contains('hidden')) {
+                intro.classList.remove('hidden');
+                toggleIcon.textContent = '📊';
+                toggleText.textContent = 'Ocultar introducción';
+            } else {
+                intro.classList.add('hidden');
+                toggleIcon.textContent = '📊';
+                toggleText.textContent = 'Ver introducción al seguimiento de progreso';
+            }
+        }
+
         // Initialize the application
         function initializeApp() {
+            // Hide user header info by default
+            document.getElementById('user-header-info').classList.add('hidden');
+            
             // Set default timer display
             updateTimerDisplay();
             updateStudyTimeDisplay();
@@ -2655,6 +2943,6 @@
             showSection('inicio');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ef8c5f37be3472',t:'MTc2MDUzMzczOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99003ac5b5f0190e',t:'MTc2MDcwODY1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
             });
